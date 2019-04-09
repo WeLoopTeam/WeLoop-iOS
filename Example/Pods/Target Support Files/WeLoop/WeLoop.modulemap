@@ -1,0 +1,6 @@
+framework module WeLoop {
+  umbrella header "WeLoop-umbrella.h"
+
+  export *
+  module * { export * }
+}

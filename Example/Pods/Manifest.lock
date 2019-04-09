@@ -1,0 +1,16 @@
+PODS:
+  - WeLoop (0.1.0)
+
+DEPENDENCIES:
+  - WeLoop (from `../`)
+
+EXTERNAL SOURCES:
+  WeLoop:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  WeLoop: 5fbad3cc6da7edd0580c8f94019772cce0c89054
+
+PODFILE CHECKSUM: f2bbf31f07ce3fbb7efbfdc77822603ebfe51121
+
+COCOAPODS: 1.6.1
