@@ -13,8 +13,8 @@ struct Settings: Codable {
     let position: String;
     let primaryColor: String;
     let secondaryColor: String;
-    let isBlur: Bool;
-    let language: String;
+    let isBlur: Bool?;
+    let language: String?;
     
     private enum CodingKeys: String, CodingKey {
         case iconUrl = "Setting_IconUrl"

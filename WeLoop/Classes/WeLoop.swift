@@ -27,6 +27,8 @@ public class WeLoop: NSObject {
     /// The current app user. Must be set before the widget can be loaded
     var user: User?
     
+    var apiKey: String?
+    
     /// A ref to the authentication, to cancel an existing previous task
     private var authenticationTask: URLSessionDataTask?
     
@@ -35,6 +37,7 @@ public class WeLoop: NSObject {
     
     public static func initialize(apiKey: String) {
         ShakeGestureDetector.shared.startAccelerometers()
+        shared.apiKey = apiKey
         shared.authenticationTask?.cancel()
         let dataTask = authenticate(apiKey: apiKey, completionHandler: { (project)  in
             do {
@@ -79,12 +82,12 @@ public class WeLoop: NSObject {
     }
     
     private func widgetURL() throws -> URL {
-        guard let project = project, let user = user else {
+        guard let project = project, let user = user, let apiKey = apiKey else {
             throw WeLoopError.requiresAccess
         }
         let settingsParams = try project.settings.queryParams()
         let userParams = try user.queryParams()
-        let urlString = "\(rootURL)/\(project.projectId)/project/conversations?params=\(settingsParams)&auto=\(userParams)"
+        let urlString = "\(rootURL)/\(apiKey)/project/conversations?params=\(settingsParams)&auto=\(userParams)"
         
         return URL(string: urlString)!
     }
