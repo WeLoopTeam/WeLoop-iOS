@@ -15,15 +15,15 @@
 		69F639A47CC28B007466DC95CC8AF185 /* WeLoop-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 23DF0BADD63277EA06A23F0283940BEE /* WeLoop-dummy.m */; };
 		6E57E333F06EC6958567866463C8944F /* Pods-WeLoop_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 607035E11E47FBC889974FA4DF8F5339 /* Pods-WeLoop_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9D1D0B252DC7ED6F5B564D3D6D482AF7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */; };
-		ABB695C9225BBE9900EC7D8D /* ShakeGestureDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB695C5225BBB2E00EC7D8D /* ShakeGestureDetector.swift */; };
-		ABB695CA225BBEA900EC7D8D /* CMAcceleration+norm.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB695C7225BBCA100EC7D8D /* CMAcceleration+norm.swift */; };
-		ABC47F802257A13B00C04759 /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC47F7E2256946700C04759 /* Authentication.swift */; };
-		ABC47F852257A58500C04759 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC47F812257A3F700C04759 /* Project.swift */; };
-		ABC47F882257A71600C04759 /* WeLoopError.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC47F862257A6EC00C04759 /* WeLoopError.swift */; };
-		ABC47F912257C77900C04759 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC47F8D2257C75400C04759 /* Settings.swift */; };
-		ABC47F922257C77B00C04759 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC47F8F2257C75C00C04759 /* User.swift */; };
-		ABC47F932257CE2B00C04759 /* String+firstLowerCased.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC47F8A2257A97E00C04759 /* String+firstLowerCased.swift */; };
-		ABC47F952257CFF700C04759 /* JSONEncoder+keyEncodingStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC47F942257CFF700C04759 /* JSONEncoder+keyEncodingStrategy.swift */; };
+		AB0593DF225D26EA00160050 /* JSONEncoder+keyEncodingStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0593D8225D26EA00160050 /* JSONEncoder+keyEncodingStrategy.swift */; };
+		AB0593E0225D26EA00160050 /* String+firstLowerCased.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0593D9225D26EA00160050 /* String+firstLowerCased.swift */; };
+		AB0593E1225D26EA00160050 /* CMAcceleration+norm.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0593DA225D26EA00160050 /* CMAcceleration+norm.swift */; };
+		AB0593E2225D26EA00160050 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0593DC225D26EA00160050 /* User.swift */; };
+		AB0593E3225D26EA00160050 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0593DD225D26EA00160050 /* Project.swift */; };
+		AB0593E4225D26EA00160050 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0593DE225D26EA00160050 /* Settings.swift */; };
+		AB0593E8225D26F600160050 /* ShakeGestureDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0593E5225D26F600160050 /* ShakeGestureDetector.swift */; };
+		AB0593E9225D26F600160050 /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0593E6225D26F600160050 /* Authentication.swift */; };
+		AB0593EA225D26F600160050 /* WeLoopError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0593E7225D26F600160050 /* WeLoopError.swift */; };
 		AD017967ACA2A9A72FD84B68E91360D5 /* Pods-WeLoop_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B84C3EE4D468A7B3A132F947DDFC46E /* Pods-WeLoop_Example-dummy.m */; };
 		D72A9F36F860C88E4C7B8989BB76B17D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */; };
 		E6B62F005B32CEFED86DB4A96DFDD8FE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */; };
@@ -66,15 +66,15 @@
 		96229BC526543823A80F160DA0C98C15 /* Pods-WeLoop_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-WeLoop_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9FD0022E086EBEE0D847610E09D45EC5 /* WeLoop.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = WeLoop.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		ABB695C5225BBB2E00EC7D8D /* ShakeGestureDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeGestureDetector.swift; sourceTree = "<group>"; };
-		ABB695C7225BBCA100EC7D8D /* CMAcceleration+norm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CMAcceleration+norm.swift"; sourceTree = "<group>"; };
-		ABC47F7E2256946700C04759 /* Authentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
-		ABC47F812257A3F700C04759 /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
-		ABC47F862257A6EC00C04759 /* WeLoopError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeLoopError.swift; sourceTree = "<group>"; };
-		ABC47F8A2257A97E00C04759 /* String+firstLowerCased.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+firstLowerCased.swift"; sourceTree = "<group>"; };
-		ABC47F8D2257C75400C04759 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
-		ABC47F8F2257C75C00C04759 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		ABC47F942257CFF700C04759 /* JSONEncoder+keyEncodingStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSONEncoder+keyEncodingStrategy.swift"; sourceTree = "<group>"; };
+		AB0593D8225D26EA00160050 /* JSONEncoder+keyEncodingStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "JSONEncoder+keyEncodingStrategy.swift"; sourceTree = "<group>"; };
+		AB0593D9225D26EA00160050 /* String+firstLowerCased.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+firstLowerCased.swift"; sourceTree = "<group>"; };
+		AB0593DA225D26EA00160050 /* CMAcceleration+norm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CMAcceleration+norm.swift"; sourceTree = "<group>"; };
+		AB0593DC225D26EA00160050 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		AB0593DD225D26EA00160050 /* Project.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
+		AB0593DE225D26EA00160050 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		AB0593E5225D26F600160050 /* ShakeGestureDetector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShakeGestureDetector.swift; path = WeLoop/Classes/ShakeGestureDetector.swift; sourceTree = "<group>"; };
+		AB0593E6225D26F600160050 /* Authentication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Authentication.swift; path = WeLoop/Classes/Authentication.swift; sourceTree = "<group>"; };
+		AB0593E7225D26F600160050 /* WeLoopError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WeLoopError.swift; path = WeLoop/Classes/WeLoopError.swift; sourceTree = "<group>"; };
 		ADFF6F265B56E157D0F6E1BFC2C59622 /* Pods-WeLoop_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-WeLoop_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		B7C2361F2361F23CD4C3A21422E60B1C /* Pods-WeLoop_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-WeLoop_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		BC11CB9E19A42A16292DE82A5399ED0C /* WeLoop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WeLoop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -159,15 +159,15 @@
 		54A842577C5901C0F626CE86BCCA6200 /* WeLoop */ = {
 			isa = PBXGroup;
 			children = (
-				ABC47F8C2257C72200C04759 /* Models */,
-				ABC47F892257A96F00C04759 /* Extensions */,
+				AB0593E6225D26F600160050 /* Authentication.swift */,
+				AB0593E5225D26F600160050 /* ShakeGestureDetector.swift */,
+				AB0593E7225D26F600160050 /* WeLoopError.swift */,
+				AB0593D7225D26EA00160050 /* Extensions */,
+				AB0593DB225D26EA00160050 /* Models */,
 				5D8BE0F618EDC7F9364E41230FF0AA32 /* WeLoop.swift */,
 				0B10A8B45B58A80D3F85DC1DA10CBE34 /* WeLoopViewController.swift */,
 				1336886CF220F6D7D9B8726A87E9C5B1 /* Pod */,
 				6865FD12C97EE6B3C54813AEDFAA15F5 /* Support Files */,
-				ABC47F7E2256946700C04759 /* Authentication.swift */,
-				ABC47F862257A6EC00C04759 /* WeLoopError.swift */,
-				ABB695C5225BBB2E00EC7D8D /* ShakeGestureDetector.swift */,
 			);
 			name = WeLoop;
 			path = ../..;
@@ -204,24 +204,26 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		ABC47F892257A96F00C04759 /* Extensions */ = {
+		AB0593D7225D26EA00160050 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				ABC47F8A2257A97E00C04759 /* String+firstLowerCased.swift */,
-				ABC47F942257CFF700C04759 /* JSONEncoder+keyEncodingStrategy.swift */,
-				ABB695C7225BBCA100EC7D8D /* CMAcceleration+norm.swift */,
+				AB0593D8225D26EA00160050 /* JSONEncoder+keyEncodingStrategy.swift */,
+				AB0593D9225D26EA00160050 /* String+firstLowerCased.swift */,
+				AB0593DA225D26EA00160050 /* CMAcceleration+norm.swift */,
 			);
-			path = Extensions;
+			name = Extensions;
+			path = WeLoop/Extensions;
 			sourceTree = "<group>";
 		};
-		ABC47F8C2257C72200C04759 /* Models */ = {
+		AB0593DB225D26EA00160050 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				ABC47F812257A3F700C04759 /* Project.swift */,
-				ABC47F8D2257C75400C04759 /* Settings.swift */,
-				ABC47F8F2257C75C00C04759 /* User.swift */,
+				AB0593DC225D26EA00160050 /* User.swift */,
+				AB0593DD225D26EA00160050 /* Project.swift */,
+				AB0593DE225D26EA00160050 /* Settings.swift */,
 			);
-			path = Models;
+			name = Models;
+			path = WeLoop/Models;
 			sourceTree = "<group>";
 		};
 		BFB016907EB0C8E389D22179B037E647 /* Development Pods */ = {
@@ -432,18 +434,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ABC47F882257A71600C04759 /* WeLoopError.swift in Sources */,
-				ABB695CA225BBEA900EC7D8D /* CMAcceleration+norm.swift in Sources */,
+				AB0593EA225D26F600160050 /* WeLoopError.swift in Sources */,
+				AB0593DF225D26EA00160050 /* JSONEncoder+keyEncodingStrategy.swift in Sources */,
+				AB0593E1225D26EA00160050 /* CMAcceleration+norm.swift in Sources */,
+				AB0593E8225D26F600160050 /* ShakeGestureDetector.swift in Sources */,
 				69F639A47CC28B007466DC95CC8AF185 /* WeLoop-dummy.m in Sources */,
-				ABB695C9225BBE9900EC7D8D /* ShakeGestureDetector.swift in Sources */,
-				ABC47F952257CFF700C04759 /* JSONEncoder+keyEncodingStrategy.swift in Sources */,
+				AB0593E0225D26EA00160050 /* String+firstLowerCased.swift in Sources */,
 				255E9DE9FD043A66E42990A9363B8E08 /* WeLoop.swift in Sources */,
 				47AA06EDD1D54E6F39C813BBAE80DBB1 /* WeLoopViewController.swift in Sources */,
-				ABC47F932257CE2B00C04759 /* String+firstLowerCased.swift in Sources */,
-				ABC47F922257C77B00C04759 /* User.swift in Sources */,
-				ABC47F912257C77900C04759 /* Settings.swift in Sources */,
-				ABC47F852257A58500C04759 /* Project.swift in Sources */,
-				ABC47F802257A13B00C04759 /* Authentication.swift in Sources */,
+				AB0593E4225D26EA00160050 /* Settings.swift in Sources */,
+				AB0593E2225D26EA00160050 /* User.swift in Sources */,
+				AB0593E3225D26EA00160050 /* Project.swift in Sources */,
+				AB0593E9225D26F600160050 /* Authentication.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
