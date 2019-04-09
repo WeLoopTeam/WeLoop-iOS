@@ -43,7 +43,7 @@ func authenticate(apiKey: String, completionHandler: @escaping AuthenticationCal
             if response.access {
                 completionHandler({response.project})
             } else {
-                throw WeLoopError.requiresAccess
+                throw WeLoopError.accessDenied
             }
         } catch (let error) {
             completionHandler({ throw error})

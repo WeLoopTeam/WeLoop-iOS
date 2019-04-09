@@ -7,12 +7,15 @@ import UIKit
 }
 
 @objc public protocol WeLoopDelegate {
-    
+    func initializationSuccessful()
+    func failedToLaunch(with error: Error)
 }
 
 private let rootURL = "https://staging.getweloop.io/app/plugin/index/#"
 
 public class WeLoop: NSObject {
+    
+    public weak var delegate: WeLoopDelegate?
     
     internal var invocationMethod: WeLoopInvocation = .none
     
@@ -22,12 +25,16 @@ public class WeLoop: NSObject {
     
     /// The associated WeLoop project. Must be loaded before trying to invoke the Weloop widget.
     /// Its value is loaded during the initialization phase.
-    var project: Project?
+    internal var project: Project?
     
     /// The current app user. Must be set before the widget can be loaded
-    var user: User?
+    internal var user: User?
     
-    var apiKey: String?
+    /// A ref to an error that occurred during the authentication. Will be passed down to the delegate the next time `invoke` is called
+    internal var authenticationError: Error?
+    
+    /// The apiKey (or project GUID) passed during initialization
+    internal var apiKey: String?
     
     /// A ref to the authentication, to cancel an existing previous task
     private var authenticationTask: URLSessionDataTask?
@@ -36,14 +43,17 @@ public class WeLoop: NSObject {
     static let shared = WeLoop()
     
     public static func initialize(apiKey: String) {
-        ShakeGestureDetector.shared.startAccelerometers()
+        
         shared.apiKey = apiKey
         shared.authenticationTask?.cancel()
+        shared.authenticationError = nil
+        shared.setupInvocation()
+
         let dataTask = authenticate(apiKey: apiKey, completionHandler: { (project)  in
             do {
                 shared.project = try project()
             } catch (let error) {
-                print(error)
+                shared.authenticationError = error
             }
         })
         shared.authenticationTask = dataTask
@@ -62,17 +72,16 @@ public class WeLoop: NSObject {
     
     /// Manually invoke the WeLoop widget.
     public static func invoke() {
-        guard let keyWindow = UIApplication.shared.keyWindow else { return }
         do {
-            
+            guard let keyWindow = UIApplication.shared.keyWindow else { throw WeLoopError.windowMissing  }
+
             let url = try shared.widgetURL()
-            print(url)
             let widgetVC = WeLoopViewController()
             widgetVC.url = url
             shared.previousViewController = keyWindow.rootViewController
             UIApplication.shared.keyWindow?.rootViewController = widgetVC
         } catch (let error) {
-            print(error)
+            shared.delegate?.failedToLaunch(with: error)
         }
     }
     
@@ -81,14 +90,32 @@ public class WeLoop: NSObject {
         super.init()
     }
     
-    private func widgetURL() throws -> URL {
-        guard let project = project, let user = user, let apiKey = apiKey else {
-            throw WeLoopError.requiresAccess
+    private func setupInvocation() {
+        switch invocationMethod {
+        case .shakeGesture:
+            ShakeGestureDetector.shared.startAccelerometers()
+            ShakeGestureDetector.shared.delegate = self
+        case .fab: break
+        default: break
         }
+    }
+    
+    private func widgetURL() throws -> URL {
+        if let error = authenticationError { throw error }
+        guard let apiKey = apiKey else { throw WeLoopError.missingAPIKey }
+        guard let user = user else { throw WeLoopError.missingUserIdentification }
+        guard let project = project else { throw WeLoopError.authenticationInProgress }
+       
         let settingsParams = try project.settings.queryParams()
         let userParams = try user.queryParams()
         let urlString = "\(rootURL)/\(apiKey)/project/conversations?params=\(settingsParams)&auto=\(userParams)"
-        
         return URL(string: urlString)!
+    }
+}
+
+extension WeLoop: ShakeGestureDelegate {
+    
+    func didReceiveShakeGesture() {
+        WeLoop.invoke()
     }
 }
