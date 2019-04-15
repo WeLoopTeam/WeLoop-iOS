@@ -11,8 +11,10 @@ import WebKit
 
 private let margin: CGFloat = 16
 
+private let weLoopScript = "WeloopIOS"
 struct WeLoopWebAction {
-    static let exit = "back"
+    static let exit = "onClosePanel"
+    static let onCapture = "onCapture"
 }
 
 class WeLoopViewController: UIViewController {
@@ -24,7 +26,7 @@ class WeLoopViewController: UIViewController {
     lazy var configuration: WKWebViewConfiguration = {
         let config = WKWebViewConfiguration()
         let userController = WKUserContentController()
-        userController.add(self, name: WeLoopWebAction.exit)
+        userController.add(self, name: weLoopScript)
         config.userContentController = userController
         return config
     }()
@@ -39,10 +41,11 @@ class WeLoopViewController: UIViewController {
     }
     
     private func configureWebview() {
-        let webView = WKWebView(frame: view.bounds, configuration: .init())
+        let webView = WKWebView(frame: view.bounds, configuration: self.configuration)
         view.addSubview(webView)
         webView.scrollView.delegate = self
         webView.allowsLinkPreview = false
+        
         
         if #available(iOS 11.0, *) {
             webView.scrollView.contentInsetAdjustmentBehavior = .never
@@ -60,7 +63,7 @@ class WeLoopViewController: UIViewController {
     }
     
     @objc func back() {
-        UIApplication.shared.delegate?.window??.rootViewController = WeLoop.shared.previousViewController
+        WeLoop.close()
     }
 }
 
@@ -72,12 +75,18 @@ extension WeLoopViewController: UIScrollViewDelegate {
 
 extension WeLoopViewController: WKScriptMessageHandler {
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
-        print(message.name)
-        switch message.name {
-        case WeLoopWebAction.exit:
-            self.back()
-        default:
-            break
+        print(message.body)
+        guard let payload = message.body as? Dictionary<String, Any> else { return }
+        
+        if (payload[WeLoopWebAction.exit] != nil) {
+            back()
+        } else if let onCapture = payload[WeLoopWebAction.onCapture] {
+            webView?.evaluateJavaScript("""
+                getCapture('yolo')
+            """, completionHandler: { (response, error) in
+                print(response as Any)
+                print(error as Any)
+            })
         }
     }
 }

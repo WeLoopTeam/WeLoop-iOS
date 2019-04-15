@@ -1,6 +1,6 @@
 //
 //  ShakeGestureDetector.swift
-//  Pods-WeLoop_Example
+//  WeLoop
 //
 //  Created by Henry Huck on 08/04/2019.
 //
@@ -12,8 +12,8 @@ protocol ShakeGestureDelegate: class {
     func didReceiveShakeGesture()
 }
 
-private let threshold = 4.0
-private let updateInterval = 1.0 / 10.0  // 10 Hz
+private let threshold = 2.5
+private let updateInterval = 1.0 / 20.0  // 20 Hz
 
 class ShakeGestureDetector {
     
@@ -27,17 +27,18 @@ class ShakeGestureDetector {
     private init() {}
     
     func startAccelerometers() {
-        // Make sure the accelerometer hardware is available.
-        if self.motionManager.isAccelerometerAvailable {
-            self.motionManager.accelerometerUpdateInterval = updateInterval
-            self.motionManager.startAccelerometerUpdates()
-            
-            // Configure a timer to fetch the data.
-            self.timer = Timer(timeInterval: updateInterval, target: self, selector: #selector(ShakeGestureDetector.receivedAcceleration), userInfo: nil, repeats: true);
-            
-            // Add the timer to the current run loop.
-            RunLoop.main.add(self.timer!, forMode: RunLoop.Mode.default)
-        }
+        guard self.motionManager.isAccelerometerAvailable else { return }
+        
+        self.motionManager.accelerometerUpdateInterval = updateInterval
+        self.motionManager.startAccelerometerUpdates()
+        
+        self.timer = Timer(timeInterval: updateInterval, target: self, selector: #selector(ShakeGestureDetector.receivedAcceleration), userInfo: nil, repeats: true);
+        RunLoop.main.add(self.timer!, forMode: RunLoop.Mode.default)
+    }
+    
+    func stopAccelerometers() {
+        guard self.motionManager.isAccelerometerAvailable else { return }
+        self.motionManager.stopAccelerometerUpdates()
     }
 
     @objc func receivedAcceleration() {

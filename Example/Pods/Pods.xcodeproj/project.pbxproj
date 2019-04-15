@@ -24,6 +24,10 @@
 		AB0593E8225D26F600160050 /* ShakeGestureDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0593E5225D26F600160050 /* ShakeGestureDetector.swift */; };
 		AB0593E9225D26F600160050 /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0593E6225D26F600160050 /* Authentication.swift */; };
 		AB0593EA225D26F600160050 /* WeLoopError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0593E7225D26F600160050 /* WeLoopError.swift */; };
+		AB67FE9822624DD6006C8255 /* FloatingButtonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB67FE9722624DD6006C8255 /* FloatingButtonController.swift */; };
+		AB67FE9A226250AA006C8255 /* WeLoopButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB67FE99226250AA006C8255 /* WeLoopButton.swift */; };
+		AB67FE9E2262528C006C8255 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB67FE9D2262528C006C8255 /* Images.xcassets */; };
+		AB67FEA022625B95006C8255 /* UIColor+hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB67FE9F22625B95006C8255 /* UIColor+hex.swift */; };
 		AD017967ACA2A9A72FD84B68E91360D5 /* Pods-WeLoop_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B84C3EE4D468A7B3A132F947DDFC46E /* Pods-WeLoop_Example-dummy.m */; };
 		D72A9F36F860C88E4C7B8989BB76B17D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */; };
 		E6B62F005B32CEFED86DB4A96DFDD8FE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */; };
@@ -75,6 +79,10 @@
 		AB0593E5225D26F600160050 /* ShakeGestureDetector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShakeGestureDetector.swift; path = WeLoop/Classes/ShakeGestureDetector.swift; sourceTree = "<group>"; };
 		AB0593E6225D26F600160050 /* Authentication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Authentication.swift; path = WeLoop/Classes/Authentication.swift; sourceTree = "<group>"; };
 		AB0593E7225D26F600160050 /* WeLoopError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WeLoopError.swift; path = WeLoop/Classes/WeLoopError.swift; sourceTree = "<group>"; };
+		AB67FE9722624DD6006C8255 /* FloatingButtonController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingButtonController.swift; sourceTree = "<group>"; };
+		AB67FE99226250AA006C8255 /* WeLoopButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeLoopButton.swift; sourceTree = "<group>"; };
+		AB67FE9D2262528C006C8255 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = WeLoop/Images.xcassets; sourceTree = "<group>"; };
+		AB67FE9F22625B95006C8255 /* UIColor+hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+hex.swift"; sourceTree = "<group>"; };
 		ADFF6F265B56E157D0F6E1BFC2C59622 /* Pods-WeLoop_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-WeLoop_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		B7C2361F2361F23CD4C3A21422E60B1C /* Pods-WeLoop_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-WeLoop_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		BC11CB9E19A42A16292DE82A5399ED0C /* WeLoop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WeLoop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -159,6 +167,7 @@
 		54A842577C5901C0F626CE86BCCA6200 /* WeLoop */ = {
 			isa = PBXGroup;
 			children = (
+				AB67FE9D2262528C006C8255 /* Images.xcassets */,
 				AB0593E6225D26F600160050 /* Authentication.swift */,
 				AB0593E5225D26F600160050 /* ShakeGestureDetector.swift */,
 				AB0593E7225D26F600160050 /* WeLoopError.swift */,
@@ -168,6 +177,8 @@
 				0B10A8B45B58A80D3F85DC1DA10CBE34 /* WeLoopViewController.swift */,
 				1336886CF220F6D7D9B8726A87E9C5B1 /* Pod */,
 				6865FD12C97EE6B3C54813AEDFAA15F5 /* Support Files */,
+				AB67FE9722624DD6006C8255 /* FloatingButtonController.swift */,
+				AB67FE99226250AA006C8255 /* WeLoopButton.swift */,
 			);
 			name = WeLoop;
 			path = ../..;
@@ -210,6 +221,7 @@
 				AB0593D8225D26EA00160050 /* JSONEncoder+keyEncodingStrategy.swift */,
 				AB0593D9225D26EA00160050 /* String+firstLowerCased.swift */,
 				AB0593DA225D26EA00160050 /* CMAcceleration+norm.swift */,
+				AB67FE9F22625B95006C8255 /* UIColor+hex.swift */,
 			);
 			name = Extensions;
 			path = WeLoop/Extensions;
@@ -362,7 +374,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0930;
-				LastUpgradeCheck = 0930;
+				LastUpgradeCheck = 1020;
 				TargetAttributes = {
 					AA18E57C48423B7B68321BCF8CE73307 = {
 						LastSwiftMigration = 1020;
@@ -371,11 +383,11 @@
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				English,
 				en,
+				Base,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
 			productRefGroup = 51DCCFBC1B8F382C7D2CC849B608B2DB /* Products */;
@@ -394,6 +406,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB67FE9E2262528C006C8255 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -435,6 +448,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB0593EA225D26F600160050 /* WeLoopError.swift in Sources */,
+				AB67FE9822624DD6006C8255 /* FloatingButtonController.swift in Sources */,
 				AB0593DF225D26EA00160050 /* JSONEncoder+keyEncodingStrategy.swift in Sources */,
 				AB0593E1225D26EA00160050 /* CMAcceleration+norm.swift in Sources */,
 				AB0593E8225D26F600160050 /* ShakeGestureDetector.swift in Sources */,
@@ -445,7 +459,9 @@
 				AB0593E4225D26EA00160050 /* Settings.swift in Sources */,
 				AB0593E2225D26EA00160050 /* User.swift in Sources */,
 				AB0593E3225D26EA00160050 /* Project.swift in Sources */,
+				AB67FEA022625B95006C8255 /* UIColor+hex.swift in Sources */,
 				AB0593E9225D26F600160050 /* Authentication.swift in Sources */,
+				AB67FE9A226250AA006C8255 /* WeLoopButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -538,6 +554,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -701,6 +718,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

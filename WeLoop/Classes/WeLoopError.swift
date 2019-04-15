@@ -1,13 +1,13 @@
 //
 //  WeLoopError.swift
-//  Pods-WeLoop_Example
+//  WeLoop
 //
 //  Created by Henry Huck on 05/04/2019.
 //
 
 import Foundation
 
-@objc public enum WeLoopError: Int, Error, LocalizedError {
+@objc public enum WeLoopError: Int, Error {
     case missingAPIKey
     case missingUserIdentification
     case accessDenied
@@ -15,7 +15,11 @@ import Foundation
     case windowMissing
     case authenticationInProgress
     
-    public var localizedDescription: String {
+   
+}
+
+extension WeLoopError: CustomStringConvertible {
+    public var description: String {
         switch self {
         case .missingAPIKey:
             return "API key is missing. Make sure to call the `initialize` function first"

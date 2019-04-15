@@ -1,6 +1,6 @@
 //
 //  Project.swift
-//  Pods-WeLoop_Example
+//  WeLoop
 //
 //  Created by Henry Huck on 05/04/2019.
 //

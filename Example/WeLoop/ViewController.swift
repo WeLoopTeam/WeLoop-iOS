@@ -25,5 +25,17 @@ class ViewController: UIViewController {
     @IBAction func launch(_ sender: Any) {
         WeLoop.invoke()
     }
+    
+    @IBAction func setInvocation(_ sender: UISegmentedControl) {
+        switch (sender.selectedSegmentIndex) {
+        case 0:
+            WeLoop.setInvocationMethod(.manual)
+        case 1:
+            WeLoop.setInvocationMethod(.shakeGesture)
+        default:
+            WeLoop.setInvocationMethod(.fab)
+        }
+    }
+    
 }
 

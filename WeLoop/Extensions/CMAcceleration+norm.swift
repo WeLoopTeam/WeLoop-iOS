@@ -1,6 +1,6 @@
 //
 //  CMAcceleration.swift
-//  Pods-WeLoop_Example
+//  WeLoop
 //
 //  Created by Henry Huck on 08/04/2019.
 //
