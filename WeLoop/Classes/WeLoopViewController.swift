@@ -11,7 +11,6 @@ import WebKit
 enum WeLoopWebAction: String, CaseIterable {
     case exit = "WeloopClosePanel"
     case getCapture = "WeloopGetCapture"
-    case response = "WeloopResponse"
     case generic = "WeloopIOS"
 }
 
@@ -33,22 +32,14 @@ class WeLoopViewController: UIViewController {
         configureWebview()
     }
     
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
+    override var prefersStatusBarHidden: Bool {
+        return true
     }
-    
+
     private func configureWebview() {
         let webView = WKWebView(frame: view.bounds, configuration: self.configuration)
         view.addSubview(webView)
-        webView.scrollView.delegate = self
         webView.allowsLinkPreview = false
-        
-        if #available(iOS 11.0, *) {
-            webView.scrollView.contentInsetAdjustmentBehavior = .never
-        } else {
-            self.automaticallyAdjustsScrollViewInsets = false
-        }
-        
         self.webView = webView
         loadWeLoop()
     }
@@ -68,12 +59,6 @@ class WeLoopViewController: UIViewController {
     }
 }
 
-extension WeLoopViewController: UIScrollViewDelegate {
-    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
-        return nil
-    }
-}
-
 extension WeLoopViewController: WKScriptMessageHandler {
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
         guard let name = WeLoopWebAction(rawValue: message.name) else { return }
@@ -82,11 +67,8 @@ extension WeLoopViewController: WKScriptMessageHandler {
             back()
         case .getCapture:
            sendScreenshot()
-        case .response:
-            print(message.body)
-        case .generic:
-            print(message.body)
-            print("should not happen")
+        default:
+            break
         }
     }
 }
