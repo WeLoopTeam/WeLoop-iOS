@@ -72,6 +72,16 @@ WeLoop.invoke()
 
 ```
 
+### Updating your plist
+
+Since WeLoop offers the possibility to upload photos from the user photo gallery and from the camera, you will have to add the following entries to your plist, if they are not already present:
+
+```plist
+<key>NSPhotoLibraryUsageDescription</key>
+<string>WeLoop needs to access your library to share pictures from your library</string>
+<key>NSCameraUsageDescription</key>
+<string>WeLoop needs to access your camera to take pictures</string>
+```
 
 ## License
 
