@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'WeLoop'
-  s.version          = '0.1.0'
+  s.version          = '0.1.1'
   s.summary          = 'Integrate WeLoop to your iOS project'
 
   s.description      = <<-DESC
@@ -19,9 +19,9 @@ Manage your community and reward the most engaged employees with a direct status
                        DESC
 
   s.homepage         = 'https://github.com/WeLoopTeam/WeLoop-iOS'
-  s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'HHK1' => 'henryhuck@hotmail.fr' }
-  s.source           = { :git => 'https://github.com/WeLoopTeam/WeLoop-iOS.git', :tag => s.version.to_s }
+  s.license          = { type: 'MIT', file: 'LICENSE' }
+  s.author           = { 'WeLoop' => 'contact@weloop.io' }
+  s.source           = { git: 'https://github.com/WeLoopTeam/WeLoop-iOS.git', tag: s.version.to_s }
 
   s.ios.deployment_target = '9.0'
   s.source_files = 'WeLoop/Classes/**/*'
