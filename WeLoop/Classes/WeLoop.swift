@@ -102,6 +102,10 @@ public class WeLoop: NSObject {
         shared.invokeSelector()
     }
     
+    /// Set the preferred button position when invoking the SDK with the Floating Action Button (Fab).
+    /// You can change this value at any point and the button position will be updated.
+    ///
+    /// - Parameter position: the desired position for the button
     public static func set(preferredButtonPosition position: ButtonPosition) {
         shared.preferredButtonPosition = position
         shared.fabController?.updatePosition(position)
