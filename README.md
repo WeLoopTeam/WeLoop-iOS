@@ -1,12 +1,12 @@
-# 
-<img src="https://weloop.io/img/logo/weloop_logo_black.svg" width="350">
-
-
 [![Version](https://img.shields.io/cocoapods/v/WeLoop.svg?style=flat)](https://cocoapods.org/pods/WeLoop)
 [![License](https://img.shields.io/cocoapods/l/WeLoop.svg?style=flat)](https://cocoapods.org/pods/WeLoop)
 [![Platform](https://img.shields.io/cocoapods/p/WeLoop.svg?style=flat)](https://cocoapods.org/pods/WeLoop)
 
+<br/>
 
+<img src="https://weloop.io/img/logo/weloop_logo_black.svg" width="350" display="block" margin="auto">
+
+<br/>
 
 
 ## Example
@@ -72,6 +72,16 @@ WeLoop.invoke()
 
 ```
 
+### Updating your plist
+
+Since WeLoop offers the possibility to upload photos from the user photo gallery and from the camera, you will have to add the following entries to your plist, if they are not already present:
+
+```plist
+<key>NSPhotoLibraryUsageDescription</key>
+<string>WeLoop needs to access your library to share pictures from your library</string>
+<key>NSCameraUsageDescription</key>
+<string>WeLoop needs to access your camera to take pictures</string>
+```
 
 ## License
 
