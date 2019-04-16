@@ -14,6 +14,10 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Requirements
 
+Since WeLoop builds in swift 5.0, Xcode 10.2 is required to build the project.
+
+The dependency requires iOS 9.0 or above to be built.
+
 ## Installation
 
 WeLoop is available through [CocoaPods](https://cocoapods.org). To install
