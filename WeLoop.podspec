@@ -24,7 +24,7 @@ Manage your community and reward the most engaged employees with a direct status
   s.source           = { :git => 'https://github.com/WeLoopTeam/WeLoop-iOS.git', :tag => s.version.to_s }
 
   s.ios.deployment_target = '9.0'
-  s.source_files = 'WeLoop/**/*'
-  s.resources = 'WeLoop/Images.xcassets"
+  s.source_files = 'WeLoop/Classes/**/*'
+  s.resources = 'WeLoop/Assets/**/*'
 
 end
