@@ -1,12 +1,14 @@
-# 
-<img src="https://weloop.io/img/logo/weloop_logo_black.svg" width="350">
-
-
 [![Version](https://img.shields.io/cocoapods/v/WeLoop.svg?style=flat)](https://cocoapods.org/pods/WeLoop)
 [![License](https://img.shields.io/cocoapods/l/WeLoop.svg?style=flat)](https://cocoapods.org/pods/WeLoop)
 [![Platform](https://img.shields.io/cocoapods/p/WeLoop.svg?style=flat)](https://cocoapods.org/pods/WeLoop)
 
+<br/>
 
+<img src="https://weloop.io/img/logo/weloop_logo_black.svg" width="350" display="block" margin="auto">
+
+<br/>
+
+# 
 
 
 ## Example
