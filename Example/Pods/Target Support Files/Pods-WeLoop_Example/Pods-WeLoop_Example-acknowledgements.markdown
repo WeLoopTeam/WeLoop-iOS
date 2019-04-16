@@ -3,7 +3,7 @@ This application makes use of the following third party libraries:
 
 ## WeLoop
 
-Copyright (c) 2019 HHK1 <henryhuck@hotmail.fr>
+Copyright (c) 2019 WeLoop <contact@weloop.io>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
