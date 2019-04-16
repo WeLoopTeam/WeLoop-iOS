@@ -13,7 +13,7 @@ import WeLoop
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     /// Change this setting to test between autoAuthentication and manual Authentication
-    private let autoAuthentication: Bool = false
+    private let autoAuthentication: Bool = true
     
     var window: UIWindow?
 
