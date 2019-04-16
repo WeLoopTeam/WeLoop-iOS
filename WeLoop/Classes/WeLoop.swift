@@ -80,14 +80,14 @@ public class WeLoop: NSObject {
     ///   - apiKey: your project Guid
     ///   - autoAuthentication: Default is true. If set to false, the user will have to provide its own credentials inside the widget.
     ///     if autoAuthentication is set to true, you'll have to provide the logged in user infos by calling `identifyUser`
-    public static func initialize(apiKey: String, autoAuthentication: Bool = true) {
+    @objc public static func initialize(apiKey: String, autoAuthentication: Bool = true) {
         shared.initialize(apiKey: apiKey, autoAuthentication: autoAuthentication)
     }
     
     /// Identify the user
     ///
     /// - Important: You **have** to call this method before the SDK can be invoked if you chose autoAuthentication in the `initialize` function
-    public static func identifyUser(firstName: String, lastName: String, email: String) {
+    @objc public static func identifyUser(firstName: String, lastName: String, email: String) {
         let user = User(firstName: firstName, lastName: lastName, email: email)
         shared.user = user
     }
@@ -96,17 +96,17 @@ public class WeLoop: NSObject {
     /// Set a delegate to handle issues when invoking the widget. 
     ///
     /// - Parameter delegate: an object conforming to `WeLoopDelegate`
-    public static func set(delegate: WeLoopDelegate) {
+    @objc public static func set(delegate: WeLoopDelegate) {
         shared.delegate = delegate
     }
     
     /// Set the method used to invoke the weLoop Widget.
-    public static func set(invocationMethod method: WeLoopInvocation) {
+    @objc public static func set(invocationMethod method: WeLoopInvocation) {
         shared.set(invocationMethod: method)
     }
     
     /// Manually invoke the WeLoop widget.
-    public static func invoke() {
+    @objc public static func invoke() {
         shared.invokeSelector()
     }
     
@@ -114,7 +114,7 @@ public class WeLoop: NSObject {
     /// You can change this value at any point and the button position will be updated.
     ///
     /// - Parameter position: the desired position for the button
-    public static func set(preferredButtonPosition position: ButtonPosition) {
+    @objc public static func set(preferredButtonPosition position: ButtonPosition) {
         shared.preferredButtonPosition = position
         shared.fabController?.updatePosition(position)
     }
