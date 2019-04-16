@@ -16,27 +16,21 @@ import UIKit
 
 @objc public protocol WeLoopDelegate {
     func initializationSuccessful()
+    func initializationFailed(with error: Error)
     func failedToLaunch(with error: Error)
 }
 
 private let rootURL = "https://staging.getweloop.io/app/plugin/index/#"
 
 public class WeLoop: NSObject {
+
+    // MARK: Authentication
     
-    public weak var delegate: WeLoopDelegate?
+    /// The apiKey (or project GUID) passed during initialization
+    private var apiKey: String?
     
-    /// Position of the floating action button. Change it before the call to `initialize`
-    public var preferredButtonPosition: ButtonPosition = .bottomRight
-    
-    /// The preferred invocation method for the SDK. Must be set using `setInvocationMethod`
-    private var invocationMethod: WeLoopInvocation = .manual
-  
-    /// A reference to the previous controller in the window when the widget is invoked. Used to restore
-    /// the app's state when the widget is dismissed
-    private var previousViewController: UIViewController?
-    
-    /// A reference to the controller containing the floating action button
-    private var fabController: FloatingButtonController?
+    /// The authentication method passed during initialization
+    private var autoAuthentication: Bool = true
     
     /// The associated WeLoop project. Must be loaded before trying to invoke the Weloop widget.
     /// Its value is loaded during the initialization phase.
@@ -48,18 +42,37 @@ public class WeLoop: NSObject {
     /// A ref to an error that occurred during the authentication. Will be passed down to the delegate the next time `invoke` is called
     private var authenticationError: Error?
     
-    /// The apiKey (or project GUID) passed during initialization
-    private var apiKey: String?
-    
-    /// The authentication method passed during initialization
-    private var autoAuthentication: Bool = true
-    
     /// A ref to the authentication, to cancel an existing previous task
     private var authenticationTask: URLSessionDataTask?
+    
+    // MARK: Preferences
+
+    /// Position of the floating action button. Change it before the call to `initialize`
+    var preferredButtonPosition: ButtonPosition = .bottomRight
+    
+    /// The preferred invocation method for the SDK. Must be set using `setInvocationMethod`
+    var invocationMethod: WeLoopInvocation = .manual
+  
+    // MARK: Object references
+    
+    /// A reference to the previous controller in the window when the widget is invoked. Used to restore
+    /// the app's state when the widget is dismissed
+    private var previousViewController: UIViewController?
+    
+    /// A reference to the controller containing the floating action button
+    private var fabController: FloatingButtonController?
+    
+    /// A screenshot of the window is taken right before invoking the SDK. This is a ref to this screenshot
+    var screenshot: UIImage?
+    
+    weak var delegate: WeLoopDelegate?
     
     /// The WeLoop singleton. This instance is not public, all methods are using static functions to keep the API simple
     static let shared = WeLoop()
     
+    
+    // MARK: - Public API
+
     
     /// Initialize the Weloop SDK
     ///
@@ -68,23 +81,7 @@ public class WeLoop: NSObject {
     ///   - autoAuthentication: Default is true. If set to false, the user will have to provide its own credentials inside the widget.
     ///     if autoAuthentication is set to true, you'll have to provide the logged in user infos by calling `identifyUser`
     public static func initialize(apiKey: String, autoAuthentication: Bool = true) {
-        
-        shared.apiKey = apiKey
-        shared.authenticationTask?.cancel()
-        shared.authenticationError = nil
-        shared.autoAuthentication = autoAuthentication
-
-        let dataTask = authenticate(apiKey: apiKey, autoAuthentication: autoAuthentication, completionHandler: { (project)  in
-            do {
-                let project = try project()
-                shared.project = project
-                shared.setupInvocation(settings: project.settings)
-            } catch (let error) {
-                shared.authenticationError = error
-            }
-        })
-        shared.authenticationTask = dataTask
-        dataTask?.resume()
+        shared.initialize(apiKey: apiKey, autoAuthentication: autoAuthentication)
     }
     
     /// Identify the user
@@ -96,43 +93,83 @@ public class WeLoop: NSObject {
     }
     
     /// Set the method used to invoke the weLoop Widget.
-    public static func setInvocationMethod(_ method: WeLoopInvocation) {
-        guard method != shared.invocationMethod, let project = shared.project else { return }
-        
-        shared.disableInvocation(method: shared.invocationMethod)
-        shared.invocationMethod = method
-        shared.setupInvocation(settings: project.settings)
+    public static func set(invocationMethod method: WeLoopInvocation) {
+        shared.set(invocationMethod: method)
     }
     
     /// Manually invoke the WeLoop widget.
     public static func invoke() {
-        do {
-            // Another instance of the widget is already present.
-            guard shared.previousViewController == nil else { return }
-            
-            guard let keyWindow = UIApplication.shared.keyWindow else { throw WeLoopError.windowMissing  }
-
-            let url = try shared.widgetURL()
-            let widgetVC = WeLoopViewController()
-            widgetVC.url = url
-            shared.previousViewController = keyWindow.rootViewController
-            UIApplication.shared.keyWindow?.rootViewController = widgetVC
-        } catch (let error) {
-            print(error)
-            shared.delegate?.failedToLaunch(with: error)
-        }
+        shared.invokeSelector()
     }
     
-    /// Close the widget, and show the previous view controller instead
-    internal static func close() {
-        guard let viewController = WeLoop.shared.previousViewController, let window = UIApplication.shared.keyWindow else { return }
-        WeLoop.shared.previousViewController = nil
-        window.rootViewController = viewController
+    public static func set(preferredButtonPosition position: ButtonPosition) {
+        shared.preferredButtonPosition = position
+        shared.fabController?.updatePosition(position)
     }
+    
+    
+    // MARK: - Internal API
+
     
     /// Initializer is made private to prevent clients from creating any other instances
     private override init() {
         super.init()
+    }
+    
+    func initialize(apiKey: String, autoAuthentication: Bool = true) {
+        self.apiKey = apiKey
+        self.autoAuthentication = autoAuthentication
+        authenticationTask?.cancel()
+        authenticationError = nil
+        
+        let dataTask = authenticate(apiKey: apiKey, autoAuthentication: autoAuthentication, completionHandler: { (project)  in
+            do {
+                let project = try project()
+                self.project = project
+                self.setupInvocation(settings: project.settings)
+                self.delegate?.initializationSuccessful()
+            } catch (let error) {
+                self.authenticationError = error
+                self.delegate?.failedToLaunch(with: error)
+            }
+        })
+        authenticationTask = dataTask
+        dataTask?.resume()
+    }
+    
+    func set(invocationMethod method: WeLoopInvocation) {
+        let oldInvocation = invocationMethod
+        invocationMethod = method
+        
+        guard oldInvocation != method, let project = project else { return }
+        
+        disableInvocation(method: oldInvocation)
+        invocationMethod = method
+        setupInvocation(settings: project.settings)
+    }
+
+    @objc func invokeSelector() {
+        do {
+            // Another instance of the widget is already present.
+            guard previousViewController == nil else { return }
+            
+            let url = try widgetURL()
+            let widgetVC = WeLoopViewController()
+            widgetVC.url = url
+            try showWidget(viewController: widgetVC)
+            
+        } catch (let error) {
+            print(error)
+            delegate?.failedToLaunch(with: error)
+        }
+    }
+    
+    /// Close the widget, and show the previous view controller instead
+    func close() {
+        guard let viewController = previousViewController, let project = project, let window = UIApplication.shared.keyWindow else { return }
+        previousViewController = nil
+        window.rootViewController = viewController
+        setupInvocation(settings: project.settings)
     }
     
     private func setupInvocation(settings: Settings) {
@@ -141,7 +178,7 @@ public class WeLoop: NSObject {
             ShakeGestureDetector.shared.startAccelerometers()
             ShakeGestureDetector.shared.delegate = self
         case .fab:
-            fabController = FloatingButtonController(position: .bottomRight, settings: settings)
+            fabController = FloatingButtonController(position: preferredButtonPosition, settings: settings)
            break
         default: break
         }
@@ -157,6 +194,15 @@ public class WeLoop: NSObject {
             fabController = nil
         default: break
         }
+    }
+    
+    private func showWidget(viewController: WeLoopViewController) throws {
+        guard let keyWindow = UIApplication.shared.keyWindow else { throw WeLoopError.windowMissing  }
+        
+        screenshot = keyWindow.takeScreenshot()
+        disableInvocation(method: invocationMethod)
+        previousViewController = keyWindow.rootViewController
+        UIApplication.shared.keyWindow?.rootViewController = viewController
     }
     
     private func widgetURL() throws -> URL {

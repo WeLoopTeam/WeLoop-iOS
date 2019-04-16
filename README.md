@@ -1,6 +1,5 @@
 # WeLoop
 
-[![CI Status](https://img.shields.io/travis/HHK1/WeLoop.svg?style=flat)](https://travis-ci.org/HHK1/WeLoop)
 [![Version](https://img.shields.io/cocoapods/v/WeLoop.svg?style=flat)](https://cocoapods.org/pods/WeLoop)
 [![License](https://img.shields.io/cocoapods/l/WeLoop.svg?style=flat)](https://cocoapods.org/pods/WeLoop)
 [![Platform](https://img.shields.io/cocoapods/p/WeLoop.svg?style=flat)](https://cocoapods.org/pods/WeLoop)

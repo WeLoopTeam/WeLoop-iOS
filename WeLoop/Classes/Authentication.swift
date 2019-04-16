@@ -29,12 +29,16 @@ func authenticate(apiKey: String, autoAuthentication: Bool, completionHandler: @
             guard let data = data else { throw WeLoopError.authenticationDataMissing }
             let response = try JSONDecoder().decode(AuthenticationResponse.self, from: data)
             if response.access || !autoAuthentication {
-                completionHandler({response.project})
+                DispatchQueue.main.async(execute: { () -> Void in
+                    completionHandler({response.project})
+                })
             } else {
                 throw WeLoopError.accessDenied
             }
         } catch (let error) {
-            completionHandler({ throw error})
+            DispatchQueue.main.async(execute: { () -> Void in
+                completionHandler({ throw error})
+            })
         }
     })
 }

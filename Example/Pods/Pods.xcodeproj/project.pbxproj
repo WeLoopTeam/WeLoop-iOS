@@ -28,6 +28,8 @@
 		AB67FE9A226250AA006C8255 /* WeLoopButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB67FE99226250AA006C8255 /* WeLoopButton.swift */; };
 		AB67FE9E2262528C006C8255 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB67FE9D2262528C006C8255 /* Images.xcassets */; };
 		AB67FEA022625B95006C8255 /* UIColor+hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB67FE9F22625B95006C8255 /* UIColor+hex.swift */; };
+		ABF5979F22664CC800203069 /* window+screenshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF5979D22664CBD00203069 /* window+screenshot.swift */; };
+		ABF597A222664D4D00203069 /* UIImage+base64.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF597A022664D4200203069 /* UIImage+base64.swift */; };
 		AD017967ACA2A9A72FD84B68E91360D5 /* Pods-WeLoop_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B84C3EE4D468A7B3A132F947DDFC46E /* Pods-WeLoop_Example-dummy.m */; };
 		D72A9F36F860C88E4C7B8989BB76B17D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */; };
 		E6B62F005B32CEFED86DB4A96DFDD8FE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */; };
@@ -83,6 +85,8 @@
 		AB67FE99226250AA006C8255 /* WeLoopButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeLoopButton.swift; sourceTree = "<group>"; };
 		AB67FE9D2262528C006C8255 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = WeLoop/Images.xcassets; sourceTree = "<group>"; };
 		AB67FE9F22625B95006C8255 /* UIColor+hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+hex.swift"; sourceTree = "<group>"; };
+		ABF5979D22664CBD00203069 /* window+screenshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "window+screenshot.swift"; sourceTree = "<group>"; };
+		ABF597A022664D4200203069 /* UIImage+base64.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+base64.swift"; sourceTree = "<group>"; };
 		ADFF6F265B56E157D0F6E1BFC2C59622 /* Pods-WeLoop_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-WeLoop_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		B7C2361F2361F23CD4C3A21422E60B1C /* Pods-WeLoop_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-WeLoop_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		BC11CB9E19A42A16292DE82A5399ED0C /* WeLoop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WeLoop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -222,6 +226,8 @@
 				AB0593D9225D26EA00160050 /* String+firstLowerCased.swift */,
 				AB0593DA225D26EA00160050 /* CMAcceleration+norm.swift */,
 				AB67FE9F22625B95006C8255 /* UIColor+hex.swift */,
+				ABF5979D22664CBD00203069 /* window+screenshot.swift */,
+				ABF597A022664D4200203069 /* UIImage+base64.swift */,
 			);
 			name = Extensions;
 			path = WeLoop/Extensions;
@@ -448,8 +454,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB0593EA225D26F600160050 /* WeLoopError.swift in Sources */,
+				ABF597A222664D4D00203069 /* UIImage+base64.swift in Sources */,
 				AB67FE9822624DD6006C8255 /* FloatingButtonController.swift in Sources */,
 				AB0593DF225D26EA00160050 /* JSONEncoder+keyEncodingStrategy.swift in Sources */,
+				ABF5979F22664CC800203069 /* window+screenshot.swift in Sources */,
 				AB0593E1225D26EA00160050 /* CMAcceleration+norm.swift in Sources */,
 				AB0593E8225D26F600160050 /* ShakeGestureDetector.swift in Sources */,
 				69F639A47CC28B007466DC95CC8AF185 /* WeLoop-dummy.m in Sources */,

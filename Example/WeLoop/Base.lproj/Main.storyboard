@@ -21,9 +21,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="gop-2W-JxQ">
-                                <rect key="frame" x="65" y="152" width="239" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="gop-2W-JxQ">
+                                <rect key="frame" x="99.5" y="152" width="176" height="29"/>
                                 <segments>
                                     <segment title="Manual"/>
                                     <segment title="Shake"/>
@@ -33,25 +32,55 @@
                                     <action selector="setInvocation:" destination="vXZ-lx-hvc" eventType="valueChanged" id="O3N-6b-ZkX"/>
                                 </connections>
                             </segmentedControl>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Invocation Method" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oRg-qH-VTj">
-                                <rect key="frame" x="116" y="94" width="142" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Invocation Method" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oRg-qH-VTj">
+                                <rect key="frame" x="116.5" y="94" width="142" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ach-sZ-4Ib">
-                                <rect key="frame" x="132" y="445" width="111" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Launch WeLoop"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ach-sZ-4Ib">
+                                <rect key="frame" x="135.5" y="445" width="104" height="30"/>
+                                <state key="normal" title="Manual Launch"/>
                                 <connections>
                                     <action selector="launch:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="p4k-15-mhL"/>
                                 </connections>
                             </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="jr9-h0-1QY">
+                                <rect key="frame" x="30" y="291" width="315" height="29"/>
+                                <segments>
+                                    <segment title="BR             "/>
+                                    <segment title="BL"/>
+                                    <segment title="TL"/>
+                                    <segment title="TR"/>
+                                </segments>
+                                <connections>
+                                    <action selector="setButtonPosition:" destination="vXZ-lx-hvc" eventType="valueChanged" id="2Et-5M-Zmh"/>
+                                </connections>
+                            </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Button Position" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qwQ-VV-neK">
+                                <rect key="frame" x="129" y="247" width="117" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="oRg-qH-VTj" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="0kZ-96-tSR"/>
+                            <constraint firstItem="Ach-sZ-4Ib" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="5Qd-UO-eQm"/>
+                            <constraint firstItem="jr9-h0-1QY" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="6xx-aa-PmU"/>
+                            <constraint firstItem="oRg-qH-VTj" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="74" id="ESC-Nz-5Pq"/>
+                            <constraint firstItem="qwQ-VV-neK" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="HQ0-R4-kXS"/>
+                            <constraint firstItem="qwQ-VV-neK" firstAttribute="top" secondItem="gop-2W-JxQ" secondAttribute="bottom" constant="67" id="HwD-4x-VVI"/>
+                            <constraint firstItem="jr9-h0-1QY" firstAttribute="top" secondItem="qwQ-VV-neK" secondAttribute="bottom" constant="23" id="Kf9-Gx-xR3"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="Ach-sZ-4Ib" secondAttribute="bottom" constant="192" id="hGQ-Ne-Mxf"/>
+                            <constraint firstItem="gop-2W-JxQ" firstAttribute="top" secondItem="oRg-qH-VTj" secondAttribute="bottom" constant="37" id="ucw-A2-4Qu"/>
+                            <constraint firstItem="gop-2W-JxQ" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="w1l-ga-dBS"/>
+                        </constraints>
                     </view>
                     <connections>
+                        <outlet property="buttonPositionSegmentedControl" destination="jr9-h0-1QY" id="WHv-Re-lOd"/>
+                        <outlet property="invocationSegmentedControl" destination="gop-2W-JxQ" id="fuB-ig-hv1"/>
                         <outlet property="launchButton" destination="Ach-sZ-4Ib" id="8Pr-U9-MH0"/>
                     </connections>
                 </viewController>

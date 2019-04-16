@@ -37,5 +37,9 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<true/>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>WeLoop needs to access your library to share photos</string>
+	<key>NSCameraUsageDescription</key>
+	<string>WeLoop needs to access your camera to take pictures</string>
 </dict>
 </plist>

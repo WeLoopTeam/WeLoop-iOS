@@ -12,17 +12,6 @@ private let size: CGFloat = 60.0
 
 class WeLoopButton: UIButton {
     
-    var color: UIColor = .green {
-        didSet(newValue) {
-            backgroundColor = newValue
-        }
-    }
-    
-   convenience init(settings: Settings) {
-        self.init(frame: .zero)
-        color = UIColor(hex: settings.primaryColor) ?? .blue
-    }
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -35,7 +24,6 @@ class WeLoopButton: UIButton {
     
     func setup() {
         setImage(weLoopIcon(), for: .normal)
-        backgroundColor = color
         layer.shadowColor = UIColor.black.cgColor
         layer.shadowRadius = 3
         layer.shadowOpacity = 0.8

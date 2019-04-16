@@ -7,19 +7,17 @@
 //
 
 import UIKit
-import WeLoop
+@testable import WeLoop
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var buttonPositionSegmentedControl: UISegmentedControl!
+    @IBOutlet weak var invocationSegmentedControl: UISegmentedControl!
     @IBOutlet weak var launchButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        invocationSegmentedControl.selectedSegmentIndex = WeLoop.shared.invocationMethod.rawValue
+        buttonPositionSegmentedControl.selectedSegmentIndex = WeLoop.shared.preferredButtonPosition.rawValue
     }
 
     @IBAction func launch(_ sender: Any) {
@@ -27,15 +25,13 @@ class ViewController: UIViewController {
     }
     
     @IBAction func setInvocation(_ sender: UISegmentedControl) {
-        switch (sender.selectedSegmentIndex) {
-        case 0:
-            WeLoop.setInvocationMethod(.manual)
-        case 1:
-            WeLoop.setInvocationMethod(.shakeGesture)
-        default:
-            WeLoop.setInvocationMethod(.fab)
-        }
+        guard let method = WeLoopInvocation(rawValue: sender.selectedSegmentIndex) else { return }
+        WeLoop.set(invocationMethod: method)
     }
     
+    @IBAction func setButtonPosition(_ sender: UISegmentedControl) {
+        guard let position = ButtonPosition(rawValue: sender.selectedSegmentIndex) else { return }
+        WeLoop.set(preferredButtonPosition: position)
+    }
 }
 

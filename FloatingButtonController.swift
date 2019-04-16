@@ -33,9 +33,9 @@ private let margin: CGFloat = 12.0;
 
 class FloatingButtonController: UIViewController {
     
-    private let position: ButtonPosition
-    private let button: WeLoopButton
+    private var position: ButtonPosition
     private var window: FloatingButtonWindow! = FloatingButtonWindow()
+    private let button: WeLoopButton
 
     required init?(coder aDecoder: NSCoder) {
         fatalError()
@@ -43,17 +43,23 @@ class FloatingButtonController: UIViewController {
     
     init(position: ButtonPosition, settings: Settings) {
         self.position = position
-        self.button = WeLoopButton(settings: settings)
+        self.button = WeLoopButton(frame: .zero)
         super.init(nibName: nil, bundle: nil)
+        
+        button.backgroundColor = UIColor(hex: settings.primaryColor)
+        
         window.windowLevel = UIWindow.Level(rawValue: CGFloat.greatestFiniteMagnitude)
         window.isHidden = false
         window.rootViewController = self
         
+        button.addTarget(WeLoop.shared, action: #selector(WeLoop.invokeSelector), for: .touchUpInside)
+
         NotificationCenter.default.addObserver(self, selector: #selector(FloatingButtonController.keyboardDidShow(notification:)), name: UIResponder.keyboardDidShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(FloatingButtonController.keyboardDidHide(notification:)), name: UIResponder.keyboardDidHideNotification, object: nil)
     }
     
     func tearDown() {
+        button.removeTarget(WeLoop.shared, action: #selector(WeLoop.invokeSelector), for: .touchUpInside)
         window.isHidden = true
         window.rootViewController = nil
         window = nil
@@ -64,12 +70,16 @@ class FloatingButtonController: UIViewController {
         super.viewDidLoad()
         view.addSubview(button)
         window.button = button
-
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         button.center = self.position.socket(view: view, buttonSize: button.bounds.width)
+    }
+    
+    func updatePosition(_ position: ButtonPosition) {
+        self.position = position
+        view.setNeedsLayout()
     }
     
     @objc func keyboardDidShow(notification: NSNotification) {
