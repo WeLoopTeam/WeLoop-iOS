@@ -14,8 +14,6 @@ import Foundation
     case authenticationDataMissing
     case windowMissing
     case authenticationInProgress
-    
-   
 }
 
 extension WeLoopError: CustomStringConvertible {

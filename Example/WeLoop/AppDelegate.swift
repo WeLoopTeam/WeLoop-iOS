@@ -12,7 +12,9 @@ import WeLoop
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    /// Change this setting to test between autoAuthentication and manual Authentication
     private let autoAuthentication: Bool = false
+    
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -20,6 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Set the invocation preferences. You can always change them after invoking the SDK
         WeLoop.set(preferredButtonPosition: .bottomRight)
         WeLoop.set(invocationMethod: .fab)
+        
+        WeLoop.set(delegate: self)
 
         if autoAuthentication {
             // Auto Authentication flow
@@ -32,5 +36,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         return true
+    }
+}
+
+extension AppDelegate: WeLoopDelegate {
+    
+    func initializationSuccessful() {
+        // From this point forward, we can safely invoke the Widget manually
+    }
+    
+    func initializationFailed(with error: Error) {
+        // Initialization Failed (no network for example). Based on the error you'll have to retry the initialization later.
+        print(error)
+    }
+    
+    func failedToLaunch(with error: Error) {
+        // The widget could not be launched. Most likely is that the initialization process failed, or the user is missing in autoAuthentication
+        print(error)
     }
 }

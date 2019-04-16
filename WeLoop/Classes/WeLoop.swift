@@ -15,9 +15,9 @@ import UIKit
 }
 
 @objc public protocol WeLoopDelegate {
-    func initializationSuccessful()
-    func initializationFailed(with error: Error)
-    func failedToLaunch(with error: Error)
+    @objc optional func initializationSuccessful()
+    @objc optional func initializationFailed(with error: Error)
+    @objc optional func failedToLaunch(with error: Error)
 }
 
 private let rootURL = "https://staging.getweloop.io/app/plugin/index/#"
@@ -92,6 +92,14 @@ public class WeLoop: NSObject {
         shared.user = user
     }
     
+    
+    /// Set a delegate to handle issues when invoking the widget. 
+    ///
+    /// - Parameter delegate: an object conforming to `WeLoopDelegate`
+    public static func set(delegate: WeLoopDelegate) {
+        shared.delegate = delegate
+    }
+    
     /// Set the method used to invoke the weLoop Widget.
     public static func set(invocationMethod method: WeLoopInvocation) {
         shared.set(invocationMethod: method)
@@ -131,10 +139,10 @@ public class WeLoop: NSObject {
                 let project = try project()
                 self.project = project
                 self.setupInvocation(settings: project.settings)
-                self.delegate?.initializationSuccessful()
+                self.delegate?.initializationSuccessful?()
             } catch (let error) {
                 self.authenticationError = error
-                self.delegate?.failedToLaunch(with: error)
+                self.delegate?.initializationFailed?(with: error)
             }
         })
         authenticationTask = dataTask
@@ -164,7 +172,7 @@ public class WeLoop: NSObject {
             
         } catch (let error) {
             print(error)
-            delegate?.failedToLaunch(with: error)
+            delegate?.failedToLaunch?(with: error)
         }
     }
     
