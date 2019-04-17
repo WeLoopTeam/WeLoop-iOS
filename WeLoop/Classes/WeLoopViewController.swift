@@ -11,6 +11,7 @@ import WebKit
 enum WeLoopWebAction: String, CaseIterable {
     case exit = "WeloopClosePanel"
     case getCapture = "WeloopGetCapture"
+    case response = "WeloopResponse"
     case generic = "WeloopIOS"
 }
 
@@ -55,7 +56,7 @@ class WeLoopViewController: UIViewController {
     
     func sendScreenshot() {
         guard let imageData = WeLoop.shared.screenshot?.toBase64() else { return }
-        webView?.evaluateJavaScript("getCapture('\(imageData)');")
+        webView?.evaluateJavaScript("getCapture('data:image/jpg;base64,\(imageData)')")
     }
 }
 
@@ -68,7 +69,7 @@ extension WeLoopViewController: WKScriptMessageHandler {
         case .getCapture:
            sendScreenshot()
         default:
-            break
+            print(message.body)
         }
     }
 }
