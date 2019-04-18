@@ -7,32 +7,32 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0598D9F46ED5E300BD6F6FDCF86FEBE8 /* WeLoop-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8274E98215CCA293C0D0F76A287EE263 /* WeLoop-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		096EBF4F78BD074E4613C45D0D1BB035 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29FEECB1964AB1780BBA38F9851D3D9 /* User.swift */; };
-		1C743A10EFEA7FCB902F5AD4563FC18B /* JSONEncoder+keyEncodingStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476C56C392F9CFFEE5BE6A2505F66D21 /* JSONEncoder+keyEncodingStrategy.swift */; };
+		0598D9F46ED5E300BD6F6FDCF86FEBE8 /* WeLoop-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9C69D969021A109C26A9F017011FF28F /* WeLoop-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0E7E03B9C9012A5BC633180332C195D5 /* UIImage+base64.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFCB3648F577A7D7B81E35A35FE7A25 /* UIImage+base64.swift */; };
+		11A05AABD52075B01C84960BE46DE01E /* FloatingButtonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE28980016372615DC92C53D1FA43D6 /* FloatingButtonController.swift */; };
+		163DF9FE5066FFAA768CFB44E1EFB64D /* WeLoopError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5D3D437A0524B14D98821AA3DE8F31 /* WeLoopError.swift */; };
+		1CB05C1071C5C51A1FEC6098436388F6 /* UIColor+hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2CB7F126AE51DFD9ABB004025DCE72 /* UIColor+hex.swift */; };
+		1CFC177AB98B26A322E3F633BEC9F365 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE758511CE66384306091FA4C761EA55 /* Project.swift */; };
 		1D21878206BB4F59D1FC601F6D01994C /* Pods-WeLoop_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = FB9F3FFC3C5C4EF3D6C87A3FA64AC243 /* Pods-WeLoop_Tests-dummy.m */; };
-		2442A25C10E24CFC526151926D4FA461 /* WeLoopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6949AAD474EAFB3846069625D9C54C66 /* WeLoopViewController.swift */; };
+		2BDE55C0FFC4521CAB4EDB6A7B6B5701 /* WeLoopButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CCD05AD9EA0E9D3E60CF1FD6A10724 /* WeLoopButton.swift */; };
 		345018CE069B5CD6D08478FC84AEEC2C /* Pods-WeLoop_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = DF5F02288DE6632F93A76D2A07F907D6 /* Pods-WeLoop_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5991FA6CCF1235F5E18B5F015628CB21 /* WeLoop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4887070AC1C4A8BE0345053CEA341D05 /* WeLoop.swift */; };
-		5B569C5E539CA1C33399E1B906E018BB /* ShakeGestureDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60E4E4688C807350AEC33287B2AEEB13 /* ShakeGestureDetector.swift */; };
-		6917D400023C2AF1454BDFCCAB63B884 /* WeLoop-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 615EF3E3AE5ECEB962F2A77E11BFD139 /* WeLoop-dummy.m */; };
+		366242C4D7335C40E0B0E3221E3F08A2 /* WeLoopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B3D5497FD439A35A1BA4358D2CEC9F /* WeLoopViewController.swift */; };
+		41CA6E95565120982E5E71B7A2682F18 /* JSONEncoder+keyEncodingStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA954FD7219003804F27463F1C8A5715 /* JSONEncoder+keyEncodingStrategy.swift */; };
+		446B006C01B7C897B784C1B518642650 /* ShakeGestureDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = E592CC45A74B120EA340A74FC1F68B71 /* ShakeGestureDetector.swift */; };
+		5A475112C704675BC2DD3B2554ACC675 /* WeLoop+Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = A297941DF8B21EB947CF8561FAC70560 /* WeLoop+Authentication.swift */; };
+		5FE7AD3C2EE1E89AD149D0F6DBAFA289 /* CMAcceleration+norm.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F769F767D0F84883928B3B45661F11 /* CMAcceleration+norm.swift */; };
+		68905AC9E66832DFAD7003C112578F0F /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB022C48D68BF00786877FC07884493B /* Settings.swift */; };
 		6E57E333F06EC6958567866463C8944F /* Pods-WeLoop_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 607035E11E47FBC889974FA4DF8F5339 /* Pods-WeLoop_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7375AB9DDE8530260E068EEA9FE307D4 /* UIImage+base64.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39154EC9CF136A30123644BF2FCD778A /* UIImage+base64.swift */; };
-		7FD62ADA68756BFD2039936DC93324C3 /* WeLoop+Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E36361AE53409CFE1A89E7917EA9B1 /* WeLoop+Authentication.swift */; };
-		8392DCF8AEC6A526ED565EC374547B09 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7916AD5B905AEFA1A59A84E43143CCF /* Project.swift */; };
-		85CC56C9E16CFB7B991AF30300CFA377 /* WeLoopButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C8DCB67CBD45EDAADCA0DD4BCA480D /* WeLoopButton.swift */; };
-		8B01A0D98C456E28D2E0757F9BE3DB29 /* WeLoopError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AFD618ED15933B3FA8D278209E3D9E /* WeLoopError.swift */; };
+		7B4F8DBC2C2A9DC09495C099F08DD729 /* String+firstLowerCased.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5931138B15B491B44DFA5CB061BF52EE /* String+firstLowerCased.swift */; };
+		844F56A60F6D12B60ABE159A1B2EB219 /* WeLoop-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F525980779E6828F315C14955B3E53B /* WeLoop-dummy.m */; };
 		9D1D0B252DC7ED6F5B564D3D6D482AF7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */; };
+		A7F685E781794AD8331FA1BC1964B639 /* window+screenshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EB20CF8164A8D54BAD580A2996079DB /* window+screenshot.swift */; };
 		AD017967ACA2A9A72FD84B68E91360D5 /* Pods-WeLoop_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B84C3EE4D468A7B3A132F947DDFC46E /* Pods-WeLoop_Example-dummy.m */; };
-		B922D358C5AF3280F803EA1E9FA4FDFD /* window+screenshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2192CE1DA861B4F6CCC52F81555603 /* window+screenshot.swift */; };
-		B97D634C59915F0A58A3856D1E1E59B4 /* CMAcceleration+norm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B283933C46DCD3BA50DBB6F06B1455 /* CMAcceleration+norm.swift */; };
-		BB73406639042AACC21861C7B7B14DFD /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BABFC8AF3EE5608300CFA1792B4EDEC9 /* Settings.swift */; };
-		CC7184DB8FAA9EB52B83A062409CF5EC /* FloatingButtonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4DE66B807706D144B2654A8171AD92 /* FloatingButtonController.swift */; };
+		C8158103CDA07174C3E33B003771D224 /* WeLoop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942AA9BF157289108A548596FF561B57 /* WeLoop.swift */; };
 		D72A9F36F860C88E4C7B8989BB76B17D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */; };
-		D8F3F695A5C03C7618DA13E967E8E910 /* UIColor+hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1698BD8E6445DCB74878D40982A4194 /* UIColor+hex.swift */; };
-		E695C8A709ADE08E6D07ED5A1F0F83D9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6C71D12B31315BE8FACEEC6B19C2CBA /* Images.xcassets */; };
+		D8E0B7CD150BBBC4E381FCE62F32737A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E841E8B791EA096D859D0555FDB639E1 /* User.swift */; };
+		E695C8A709ADE08E6D07ED5A1F0F83D9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 337293BEEAB6ACFF33F15E72EF55B90C /* Images.xcassets */; };
 		E6B62F005B32CEFED86DB4A96DFDD8FE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */; };
-		EE543CA31F71BA656116AA58BB7C1E0A /* String+firstLowerCased.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7661493BDA291B515A7E62BB25415B01 /* String+firstLowerCased.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,52 +53,52 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1FA5559108592484EBE4FF9FF0A51E6F /* WeLoop.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = WeLoop.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		21E36361AE53409CFE1A89E7917EA9B1 /* WeLoop+Authentication.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "WeLoop+Authentication.swift"; path = "WeLoop/Classes/WeLoop+Authentication.swift"; sourceTree = "<group>"; };
+		0AE28980016372615DC92C53D1FA43D6 /* FloatingButtonController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FloatingButtonController.swift; path = WeLoop/Classes/FloatingButtonController.swift; sourceTree = "<group>"; };
+		0B5D3D437A0524B14D98821AA3DE8F31 /* WeLoopError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = WeLoopError.swift; path = WeLoop/Classes/WeLoopError.swift; sourceTree = "<group>"; };
+		1A2CB7F126AE51DFD9ABB004025DCE72 /* UIColor+hex.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIColor+hex.swift"; sourceTree = "<group>"; };
 		24F4167C9FD94EDAEAAD5B7F4EF7A2B0 /* Pods-WeLoop_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-WeLoop_Example.release.xcconfig"; sourceTree = "<group>"; };
+		2F525980779E6828F315C14955B3E53B /* WeLoop-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "WeLoop-dummy.m"; sourceTree = "<group>"; };
 		32D6DC2A0F37CE42E2A9CCBC14EF21CD /* Pods-WeLoop_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-WeLoop_Tests.modulemap"; sourceTree = "<group>"; };
+		337293BEEAB6ACFF33F15E72EF55B90C /* Images.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = WeLoop/Assets/Images.xcassets; sourceTree = "<group>"; };
 		36DCF2F6C22BF352A247E68D949B3B7E /* Pods-WeLoop_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-WeLoop_Example-Info.plist"; sourceTree = "<group>"; };
-		39154EC9CF136A30123644BF2FCD778A /* UIImage+base64.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIImage+base64.swift"; sourceTree = "<group>"; };
-		3B2890BE089EF781C7E940262774E4A4 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		3C9A47657035BB5EDC65AD86D25819DB /* Pods-WeLoop_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-WeLoop_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		4315451B98DEFA405893EEA1754D3037 /* Pods_WeLoop_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeLoop_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		46B283933C46DCD3BA50DBB6F06B1455 /* CMAcceleration+norm.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "CMAcceleration+norm.swift"; sourceTree = "<group>"; };
-		476C56C392F9CFFEE5BE6A2505F66D21 /* JSONEncoder+keyEncodingStrategy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "JSONEncoder+keyEncodingStrategy.swift"; sourceTree = "<group>"; };
-		4887070AC1C4A8BE0345053CEA341D05 /* WeLoop.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = WeLoop.swift; path = WeLoop/Classes/WeLoop.swift; sourceTree = "<group>"; };
+		4315451B98DEFA405893EEA1754D3037 /* Pods_WeLoop_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_WeLoop_Example.framework; path = "Pods-WeLoop_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		57B1FFC8A7C585C61C6A710AD13CC38D /* WeLoop.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = WeLoop.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		5931138B15B491B44DFA5CB061BF52EE /* String+firstLowerCased.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "String+firstLowerCased.swift"; sourceTree = "<group>"; };
 		607035E11E47FBC889974FA4DF8F5339 /* Pods-WeLoop_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-WeLoop_Example-umbrella.h"; sourceTree = "<group>"; };
-		60E4E4688C807350AEC33287B2AEEB13 /* ShakeGestureDetector.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ShakeGestureDetector.swift; path = WeLoop/Classes/ShakeGestureDetector.swift; sourceTree = "<group>"; };
-		615EF3E3AE5ECEB962F2A77E11BFD139 /* WeLoop-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "WeLoop-dummy.m"; sourceTree = "<group>"; };
-		61AFBA1DF0AC2E41CA27F5F54FAD4C52 /* WeLoop.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = WeLoop.modulemap; sourceTree = "<group>"; };
-		6949AAD474EAFB3846069625D9C54C66 /* WeLoopViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = WeLoopViewController.swift; path = WeLoop/Classes/WeLoopViewController.swift; sourceTree = "<group>"; };
+		629C37191C3A90F219189E88B27D98D2 /* WeLoop-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "WeLoop-Info.plist"; sourceTree = "<group>"; };
 		6B84C3EE4D468A7B3A132F947DDFC46E /* Pods-WeLoop_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-WeLoop_Example-dummy.m"; sourceTree = "<group>"; };
 		6F6F360FA1C14286F4F8B645C76D593A /* Pods-WeLoop_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-WeLoop_Example-frameworks.sh"; sourceTree = "<group>"; };
-		7661493BDA291B515A7E62BB25415B01 /* String+firstLowerCased.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "String+firstLowerCased.swift"; sourceTree = "<group>"; };
+		7360183D02059DFD1780FA3B37584007 /* WeLoop.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = WeLoop.xcconfig; sourceTree = "<group>"; };
+		77B3D5497FD439A35A1BA4358D2CEC9F /* WeLoopViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = WeLoopViewController.swift; path = WeLoop/Classes/WeLoopViewController.swift; sourceTree = "<group>"; };
 		77BFF05FD11EBD49A4118D2F1F5181F0 /* Pods-WeLoop_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-WeLoop_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		81C8DCB67CBD45EDAADCA0DD4BCA480D /* WeLoopButton.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = WeLoopButton.swift; path = WeLoop/Classes/WeLoopButton.swift; sourceTree = "<group>"; };
-		8274E98215CCA293C0D0F76A287EE263 /* WeLoop-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "WeLoop-umbrella.h"; sourceTree = "<group>"; };
-		883B26D0CE374D2314545718AE8F3888 /* WeLoop.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = WeLoop.xcconfig; sourceTree = "<group>"; };
-		90AFD618ED15933B3FA8D278209E3D9E /* WeLoopError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = WeLoopError.swift; path = WeLoop/Classes/WeLoopError.swift; sourceTree = "<group>"; };
+		77CCD05AD9EA0E9D3E60CF1FD6A10724 /* WeLoopButton.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = WeLoopButton.swift; path = WeLoop/Classes/WeLoopButton.swift; sourceTree = "<group>"; };
+		942AA9BF157289108A548596FF561B57 /* WeLoop.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = WeLoop.swift; path = WeLoop/Classes/WeLoop.swift; sourceTree = "<group>"; };
 		96229BC526543823A80F160DA0C98C15 /* Pods-WeLoop_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-WeLoop_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		A6C71D12B31315BE8FACEEC6B19C2CBA /* Images.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = WeLoop/Assets/Images.xcassets; sourceTree = "<group>"; };
-		A7916AD5B905AEFA1A59A84E43143CCF /* Project.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
-		A8D15E7D7075B83C8039F87462508BE3 /* WeLoop-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "WeLoop-Info.plist"; sourceTree = "<group>"; };
+		9A9F7A4E9B3F7B1C6AFA957FFF9B69F7 /* WeLoop-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "WeLoop-prefix.pch"; sourceTree = "<group>"; };
+		9C69D969021A109C26A9F017011FF28F /* WeLoop-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "WeLoop-umbrella.h"; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9EB20CF8164A8D54BAD580A2996079DB /* window+screenshot.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "window+screenshot.swift"; sourceTree = "<group>"; };
+		A297941DF8B21EB947CF8561FAC70560 /* WeLoop+Authentication.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "WeLoop+Authentication.swift"; path = "WeLoop/Classes/WeLoop+Authentication.swift"; sourceTree = "<group>"; };
 		ADFF6F265B56E157D0F6E1BFC2C59622 /* Pods-WeLoop_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-WeLoop_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		AF4DE66B807706D144B2654A8171AD92 /* FloatingButtonController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FloatingButtonController.swift; path = WeLoop/Classes/FloatingButtonController.swift; sourceTree = "<group>"; };
 		B7C2361F2361F23CD4C3A21422E60B1C /* Pods-WeLoop_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-WeLoop_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
-		BABFC8AF3EE5608300CFA1792B4EDEC9 /* Settings.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
-		BC11CB9E19A42A16292DE82A5399ED0C /* WeLoop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WeLoop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC11CB9E19A42A16292DE82A5399ED0C /* WeLoop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = WeLoop.framework; path = WeLoop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BE758511CE66384306091FA4C761EA55 /* Project.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
 		C9F2F1A3AE273AD528183F5E733901ED /* Pods-WeLoop_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-WeLoop_Example-acknowledgements.plist"; sourceTree = "<group>"; };
+		CA954FD7219003804F27463F1C8A5715 /* JSONEncoder+keyEncodingStrategy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "JSONEncoder+keyEncodingStrategy.swift"; sourceTree = "<group>"; };
 		CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		D1698BD8E6445DCB74878D40982A4194 /* UIColor+hex.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIColor+hex.swift"; sourceTree = "<group>"; };
+		D0F769F767D0F84883928B3B45661F11 /* CMAcceleration+norm.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "CMAcceleration+norm.swift"; sourceTree = "<group>"; };
 		D1BD0FE79DDDE79DC5FCDB0AB297C3E5 /* Pods-WeLoop_Tests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-WeLoop_Tests-Info.plist"; sourceTree = "<group>"; };
+		D465EEB419BD7CF883D6A18A790CAF5F /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		D5CEFC0C5195425DD7A861E9447B243E /* WeLoop.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = WeLoop.modulemap; sourceTree = "<group>"; };
 		DF5F02288DE6632F93A76D2A07F907D6 /* Pods-WeLoop_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-WeLoop_Tests-umbrella.h"; sourceTree = "<group>"; };
-		E0270574154DE3B1651543A7D87B02A9 /* Pods_WeLoop_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeLoop_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E29FEECB1964AB1780BBA38F9851D3D9 /* User.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		EB2192CE1DA861B4F6CCC52F81555603 /* window+screenshot.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "window+screenshot.swift"; sourceTree = "<group>"; };
-		F0F4E7831EA869D6326528774B4C362C /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		E0270574154DE3B1651543A7D87B02A9 /* Pods_WeLoop_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_WeLoop_Tests.framework; path = "Pods-WeLoop_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E592CC45A74B120EA340A74FC1F68B71 /* ShakeGestureDetector.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ShakeGestureDetector.swift; path = WeLoop/Classes/ShakeGestureDetector.swift; sourceTree = "<group>"; };
+		E841E8B791EA096D859D0555FDB639E1 /* User.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		EB022C48D68BF00786877FC07884493B /* Settings.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		ECFCB3648F577A7D7B81E35A35FE7A25 /* UIImage+base64.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIImage+base64.swift"; sourceTree = "<group>"; };
+		ED9E1A180E8CBCB856F16E26B6509802 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
 		F14CB5A5BD94319F4AB0229DBFDBF93F /* Pods-WeLoop_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-WeLoop_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
-		F2DA175FA2316D5E1C2CFFC5550D7385 /* WeLoop-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "WeLoop-prefix.pch"; sourceTree = "<group>"; };
 		F4A96546C5A781D614DE224E3980A997 /* Pods-WeLoop_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-WeLoop_Example.modulemap"; sourceTree = "<group>"; };
 		FB9F3FFC3C5C4EF3D6C87A3FA64AC243 /* Pods-WeLoop_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-WeLoop_Tests-dummy.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -148,28 +148,24 @@
 			path = "Target Support Files/Pods-WeLoop_Example";
 			sourceTree = "<group>";
 		};
-		3355B851DF526A8F5A050ACA0CD05C56 /* Extensions */ = {
+		258DD486C19DCAC02B71F7EC3280A1D5 /* WeLoop */ = {
 			isa = PBXGroup;
 			children = (
-				46B283933C46DCD3BA50DBB6F06B1455 /* CMAcceleration+norm.swift */,
-				476C56C392F9CFFEE5BE6A2505F66D21 /* JSONEncoder+keyEncodingStrategy.swift */,
-				7661493BDA291B515A7E62BB25415B01 /* String+firstLowerCased.swift */,
-				D1698BD8E6445DCB74878D40982A4194 /* UIColor+hex.swift */,
-				39154EC9CF136A30123644BF2FCD778A /* UIImage+base64.swift */,
-				EB2192CE1DA861B4F6CCC52F81555603 /* window+screenshot.swift */,
+				0AE28980016372615DC92C53D1FA43D6 /* FloatingButtonController.swift */,
+				E592CC45A74B120EA340A74FC1F68B71 /* ShakeGestureDetector.swift */,
+				942AA9BF157289108A548596FF561B57 /* WeLoop.swift */,
+				A297941DF8B21EB947CF8561FAC70560 /* WeLoop+Authentication.swift */,
+				77CCD05AD9EA0E9D3E60CF1FD6A10724 /* WeLoopButton.swift */,
+				0B5D3D437A0524B14D98821AA3DE8F31 /* WeLoopError.swift */,
+				77B3D5497FD439A35A1BA4358D2CEC9F /* WeLoopViewController.swift */,
+				D90805D5E7B78FFA93D5F73CE3DBC1D9 /* Extensions */,
+				DFAF9D8A61A6D15F47AE35361789828E /* Models */,
+				6AEA54B27843560957F2592C78D681EE /* Pod */,
+				5430EC02813BE13133EAFFEE43F2DE1C /* Resources */,
+				A797BD194E354816A71C86F536F7531C /* Support Files */,
 			);
-			name = Extensions;
-			path = WeLoop/Classes/Extensions;
-			sourceTree = "<group>";
-		};
-		46B78EA8E494380E8DCCB3E875B96262 /* Pod */ = {
-			isa = PBXGroup;
-			children = (
-				F0F4E7831EA869D6326528774B4C362C /* LICENSE */,
-				3B2890BE089EF781C7E940262774E4A4 /* README.md */,
-				1FA5559108592484EBE4FF9FF0A51E6F /* WeLoop.podspec */,
-			);
-			name = Pod;
+			name = WeLoop;
+			path = ../..;
 			sourceTree = "<group>";
 		};
 		51DCCFBC1B8F382C7D2CC849B608B2DB /* Products */ = {
@@ -182,38 +178,22 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		5F94E148E3264367AC56A98D735D847F /* Support Files */ = {
+		5430EC02813BE13133EAFFEE43F2DE1C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				61AFBA1DF0AC2E41CA27F5F54FAD4C52 /* WeLoop.modulemap */,
-				883B26D0CE374D2314545718AE8F3888 /* WeLoop.xcconfig */,
-				615EF3E3AE5ECEB962F2A77E11BFD139 /* WeLoop-dummy.m */,
-				A8D15E7D7075B83C8039F87462508BE3 /* WeLoop-Info.plist */,
-				F2DA175FA2316D5E1C2CFFC5550D7385 /* WeLoop-prefix.pch */,
-				8274E98215CCA293C0D0F76A287EE263 /* WeLoop-umbrella.h */,
+				337293BEEAB6ACFF33F15E72EF55B90C /* Images.xcassets */,
 			);
-			name = "Support Files";
-			path = "Example/Pods/Target Support Files/WeLoop";
+			name = Resources;
 			sourceTree = "<group>";
 		};
-		9541205CD5CD3A5A1B9C3CBC1065C2AB /* WeLoop */ = {
+		6AEA54B27843560957F2592C78D681EE /* Pod */ = {
 			isa = PBXGroup;
 			children = (
-				21E36361AE53409CFE1A89E7917EA9B1 /* WeLoop+Authentication.swift */,
-				AF4DE66B807706D144B2654A8171AD92 /* FloatingButtonController.swift */,
-				60E4E4688C807350AEC33287B2AEEB13 /* ShakeGestureDetector.swift */,
-				4887070AC1C4A8BE0345053CEA341D05 /* WeLoop.swift */,
-				81C8DCB67CBD45EDAADCA0DD4BCA480D /* WeLoopButton.swift */,
-				90AFD618ED15933B3FA8D278209E3D9E /* WeLoopError.swift */,
-				6949AAD474EAFB3846069625D9C54C66 /* WeLoopViewController.swift */,
-				3355B851DF526A8F5A050ACA0CD05C56 /* Extensions */,
-				E5F46F344E975FF207A0C1D3092FD594 /* Models */,
-				46B78EA8E494380E8DCCB3E875B96262 /* Pod */,
-				B007F145DDF06FF35676018E44BACED6 /* Resources */,
-				5F94E148E3264367AC56A98D735D847F /* Support Files */,
+				ED9E1A180E8CBCB856F16E26B6509802 /* LICENSE */,
+				D465EEB419BD7CF883D6A18A790CAF5F /* README.md */,
+				57B1FFC8A7C585C61C6A710AD13CC38D /* WeLoop.podspec */,
 			);
-			name = WeLoop;
-			path = ../..;
+			name = Pod;
 			sourceTree = "<group>";
 		};
 		99266C43C1430D8F227E15E0BA823A4E /* Targets Support Files */ = {
@@ -233,20 +213,26 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
+		A797BD194E354816A71C86F536F7531C /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				D5CEFC0C5195425DD7A861E9447B243E /* WeLoop.modulemap */,
+				7360183D02059DFD1780FA3B37584007 /* WeLoop.xcconfig */,
+				2F525980779E6828F315C14955B3E53B /* WeLoop-dummy.m */,
+				629C37191C3A90F219189E88B27D98D2 /* WeLoop-Info.plist */,
+				9A9F7A4E9B3F7B1C6AFA957FFF9B69F7 /* WeLoop-prefix.pch */,
+				9C69D969021A109C26A9F017011FF28F /* WeLoop-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/WeLoop";
+			sourceTree = "<group>";
+		};
 		AA3C0808C9DBC24D928E8B6F966DEFB6 /* Development Pods */ = {
 			isa = PBXGroup;
 			children = (
-				9541205CD5CD3A5A1B9C3CBC1065C2AB /* WeLoop */,
+				258DD486C19DCAC02B71F7EC3280A1D5 /* WeLoop */,
 			);
 			name = "Development Pods";
-			sourceTree = "<group>";
-		};
-		B007F145DDF06FF35676018E44BACED6 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				A6C71D12B31315BE8FACEEC6B19C2CBA /* Images.xcassets */,
-			);
-			name = Resources;
 			sourceTree = "<group>";
 		};
 		C523B95E1471D9E88FA81E57CC1B31D1 /* Pods-WeLoop_Tests */ = {
@@ -284,12 +270,26 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		E5F46F344E975FF207A0C1D3092FD594 /* Models */ = {
+		D90805D5E7B78FFA93D5F73CE3DBC1D9 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				A7916AD5B905AEFA1A59A84E43143CCF /* Project.swift */,
-				BABFC8AF3EE5608300CFA1792B4EDEC9 /* Settings.swift */,
-				E29FEECB1964AB1780BBA38F9851D3D9 /* User.swift */,
+				D0F769F767D0F84883928B3B45661F11 /* CMAcceleration+norm.swift */,
+				CA954FD7219003804F27463F1C8A5715 /* JSONEncoder+keyEncodingStrategy.swift */,
+				5931138B15B491B44DFA5CB061BF52EE /* String+firstLowerCased.swift */,
+				1A2CB7F126AE51DFD9ABB004025DCE72 /* UIColor+hex.swift */,
+				ECFCB3648F577A7D7B81E35A35FE7A25 /* UIImage+base64.swift */,
+				9EB20CF8164A8D54BAD580A2996079DB /* window+screenshot.swift */,
+			);
+			name = Extensions;
+			path = WeLoop/Classes/Extensions;
+			sourceTree = "<group>";
+		};
+		DFAF9D8A61A6D15F47AE35361789828E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				BE758511CE66384306091FA4C761EA55 /* Project.swift */,
+				EB022C48D68BF00786877FC07884493B /* Settings.swift */,
+				E841E8B791EA096D859D0555FDB639E1 /* User.swift */,
 			);
 			name = Models;
 			path = WeLoop/Classes/Models;
@@ -330,7 +330,7 @@
 			buildConfigurationList = 27AD0544202CBDFD73D52323F67F9A8C /* Build configuration list for PBXNativeTarget "WeLoop" */;
 			buildPhases = (
 				A1643283C2835E8375B1F516047DD7C8 /* Headers */,
-				A053011F24C77E7BF2A76E57E44D3CB5 /* Sources */,
+				D7C0EE8EC5DC03E1F8C2C13884A8DC1B /* Sources */,
 				0C64F3201FDDF12D4749812B8C04C61F /* Frameworks */,
 				A826838743DEE15BE9ABDBB44DF1DE1A /* Resources */,
 			);
@@ -395,7 +395,6 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				English,
 				en,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
@@ -452,27 +451,27 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A053011F24C77E7BF2A76E57E44D3CB5 /* Sources */ = {
+		D7C0EE8EC5DC03E1F8C2C13884A8DC1B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7FD62ADA68756BFD2039936DC93324C3 /* WeLoop+Authentication.swift in Sources */,
-				B97D634C59915F0A58A3856D1E1E59B4 /* CMAcceleration+norm.swift in Sources */,
-				CC7184DB8FAA9EB52B83A062409CF5EC /* FloatingButtonController.swift in Sources */,
-				1C743A10EFEA7FCB902F5AD4563FC18B /* JSONEncoder+keyEncodingStrategy.swift in Sources */,
-				8392DCF8AEC6A526ED565EC374547B09 /* Project.swift in Sources */,
-				BB73406639042AACC21861C7B7B14DFD /* Settings.swift in Sources */,
-				5B569C5E539CA1C33399E1B906E018BB /* ShakeGestureDetector.swift in Sources */,
-				EE543CA31F71BA656116AA58BB7C1E0A /* String+firstLowerCased.swift in Sources */,
-				D8F3F695A5C03C7618DA13E967E8E910 /* UIColor+hex.swift in Sources */,
-				7375AB9DDE8530260E068EEA9FE307D4 /* UIImage+base64.swift in Sources */,
-				096EBF4F78BD074E4613C45D0D1BB035 /* User.swift in Sources */,
-				6917D400023C2AF1454BDFCCAB63B884 /* WeLoop-dummy.m in Sources */,
-				5991FA6CCF1235F5E18B5F015628CB21 /* WeLoop.swift in Sources */,
-				85CC56C9E16CFB7B991AF30300CFA377 /* WeLoopButton.swift in Sources */,
-				8B01A0D98C456E28D2E0757F9BE3DB29 /* WeLoopError.swift in Sources */,
-				2442A25C10E24CFC526151926D4FA461 /* WeLoopViewController.swift in Sources */,
-				B922D358C5AF3280F803EA1E9FA4FDFD /* window+screenshot.swift in Sources */,
+				5FE7AD3C2EE1E89AD149D0F6DBAFA289 /* CMAcceleration+norm.swift in Sources */,
+				11A05AABD52075B01C84960BE46DE01E /* FloatingButtonController.swift in Sources */,
+				41CA6E95565120982E5E71B7A2682F18 /* JSONEncoder+keyEncodingStrategy.swift in Sources */,
+				1CFC177AB98B26A322E3F633BEC9F365 /* Project.swift in Sources */,
+				68905AC9E66832DFAD7003C112578F0F /* Settings.swift in Sources */,
+				446B006C01B7C897B784C1B518642650 /* ShakeGestureDetector.swift in Sources */,
+				7B4F8DBC2C2A9DC09495C099F08DD729 /* String+firstLowerCased.swift in Sources */,
+				1CB05C1071C5C51A1FEC6098436388F6 /* UIColor+hex.swift in Sources */,
+				0E7E03B9C9012A5BC633180332C195D5 /* UIImage+base64.swift in Sources */,
+				D8E0B7CD150BBBC4E381FCE62F32737A /* User.swift in Sources */,
+				5A475112C704675BC2DD3B2554ACC675 /* WeLoop+Authentication.swift in Sources */,
+				844F56A60F6D12B60ABE159A1B2EB219 /* WeLoop-dummy.m in Sources */,
+				C8158103CDA07174C3E33B003771D224 /* WeLoop.swift in Sources */,
+				2BDE55C0FFC4521CAB4EDB6A7B6B5701 /* WeLoopButton.swift in Sources */,
+				163DF9FE5066FFAA768CFB44E1EFB64D /* WeLoopError.swift in Sources */,
+				366242C4D7335C40E0B0E3221E3F08A2 /* WeLoopViewController.swift in Sources */,
+				A7F685E781794AD8331FA1BC1964B639 /* window+screenshot.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -660,7 +659,7 @@
 		};
 		1AD9DBE0ADAC1245F720CA62A99CD8FF /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 883B26D0CE374D2314545718AE8F3888 /* WeLoop.xcconfig */;
+			baseConfigurationReference = 7360183D02059DFD1780FA3B37584007 /* WeLoop.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -691,7 +690,7 @@
 		};
 		A15243A891D362721CDE68E843A3A0DE /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 883B26D0CE374D2314545718AE8F3888 /* WeLoop.xcconfig */;
+			baseConfigurationReference = 7360183D02059DFD1780FA3B37584007 /* WeLoop.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -774,7 +773,8 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 4.2;
 				SYMROOT = "${SRCROOT}/../build";
 			};
