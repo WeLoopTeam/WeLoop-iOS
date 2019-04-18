@@ -15,7 +15,12 @@ class WeLoopButton: UIButton {
     var color: UIColor? = nil  {
         didSet {
             backgroundColor = color
-            layer.shadowColor = color?.cgColor
+        }
+    }
+    
+    override var isHighlighted: Bool {
+        willSet {
+            layer.shadowOpacity = isHighlighted ? 0.0 : 0.5
         }
     }
     
@@ -33,10 +38,12 @@ class WeLoopButton: UIButton {
         setImage(weLoopIcon(), for: .normal)
         layer.shadowColor = UIColor.black.cgColor
         layer.shadowRadius = 3
-        layer.shadowOpacity = 0.8
+        layer.shadowOpacity = 0.5
         layer.shadowOffset = CGSize.zero
         
         layer.cornerRadius = size / 2
+        
+        adjustsImageWhenHighlighted = false
 
         translatesAutoresizingMaskIntoConstraints = false
         widthAnchor.constraint(equalToConstant: size).isActive = true
@@ -47,4 +54,6 @@ class WeLoopButton: UIButton {
         let bundle = Bundle(for: WeLoopButton.self)
         return UIImage(named: "WeLoopIcon", in: bundle, compatibleWith: nil)
     }
+    
+    
 }

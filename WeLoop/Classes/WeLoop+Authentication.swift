@@ -59,16 +59,16 @@ extension WeLoop {
     }
     
     private func authenticationURL() -> URL {
-        if let domain = domain {
-            return URL(string: "https://\(domain)-api.getweloop.io/api/UnauthorizedData/checkProjectIsVisible")!
+        if let subdomain = subdomain {
+            return URL(string: "https://\(subdomain)-api.getweloop.io/api/UnauthorizedData/checkProjectIsVisible")!
         } else {
             return URL(string: "https://api.getweloop.io/api/UnauthorizedData/checkProjectIsVisible")!
         }
     }
     
     func appURL() -> String {
-        if let domain = domain {
-            return "https://\(domain).getweloop.io/app/plugin/index/#"
+        if let subdomain = subdomain {
+            return "https://\(subdomain).getweloop.io/app/plugin/index/#"
         } else {
             return "https://app.getweloop.io/app/plugin/index/#"
         }

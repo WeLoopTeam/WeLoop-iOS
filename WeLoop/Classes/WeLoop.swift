@@ -30,8 +30,8 @@ public class WeLoop: NSObject {
     /// The authentication method passed during initialization
     var autoAuthentication: Bool = true
     
-    /// The user domain used in the api and app urls
-    var domain: String? = nil
+    /// The user subdomain used in the api and app urls
+    var subdomain: String? = nil
     
     /// The associated WeLoop project. Must be loaded before trying to invoke the Weloop widget.
     /// Its value is loaded during the initialization phase.
@@ -83,8 +83,8 @@ public class WeLoop: NSObject {
     ///     if autoAuthentication is set to true, you'll have to provide the logged in user infos by calling `identifyUser`
     ///   - domain: Default to nil. You can specify a domain if your WeLoop urls are customized. For example if your WeLoop App url is `"https://myCompany.getweloop.io/"`
     ///     pass `"myCompany"` for this parameter.
-    @objc public static func initialize(apiKey: String, autoAuthentication: Bool = true, domain: String? = nil) {
-        shared.initialize(apiKey: apiKey, autoAuthentication: autoAuthentication, domain: domain)
+    @objc public static func initialize(apiKey: String, autoAuthentication: Bool = true, subdomain: String? = nil) {
+        shared.initialize(apiKey: apiKey, autoAuthentication: autoAuthentication, subdomain: subdomain)
     }
     
     /// Identify the user
@@ -131,10 +131,10 @@ public class WeLoop: NSObject {
         super.init()
     }
     
-    func initialize(apiKey: String, autoAuthentication: Bool = true, domain: String? = nil) {
+    func initialize(apiKey: String, autoAuthentication: Bool = true, subdomain: String? = nil) {
         self.apiKey = apiKey
         self.autoAuthentication = autoAuthentication
-        self.domain = domain
+        self.subdomain = subdomain
         authenticationTask?.cancel()
         authenticationError = nil
         
