@@ -1,6 +1,0 @@
-framework module Pods_WeLoop_Example {
-  umbrella header "Pods-WeLoop_Example-umbrella.h"
-
-  export *
-  module * { export * }
-}

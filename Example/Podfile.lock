@@ -1,5 +1,5 @@
 PODS:
-  - WeLoop (0.2.0)
+  - WeLoop (0.2.1)
 
 DEPENDENCIES:
   - WeLoop (from `../`)
@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  WeLoop: 717ee21a1e4729dce4b64d5e8d0fa874e89266dd
+  WeLoop: 2983036812f54ec6e29298e3c889720e08c95311
 
 PODFILE CHECKSUM: f2bbf31f07ce3fbb7efbfdc77822603ebfe51121
 
