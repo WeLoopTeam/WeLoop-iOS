@@ -12,6 +12,13 @@ private let size: CGFloat = 60.0
 
 class WeLoopButton: UIButton {
     
+    var color: UIColor? = nil  {
+        didSet {
+            backgroundColor = color
+            layer.shadowColor = color?.cgColor
+        }
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()

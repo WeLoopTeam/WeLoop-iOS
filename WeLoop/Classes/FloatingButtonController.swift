@@ -46,7 +46,7 @@ class FloatingButtonController: UIViewController {
         self.button = WeLoopButton(frame: .zero)
         super.init(nibName: nil, bundle: nil)
         
-        button.backgroundColor = UIColor(hex: settings.primaryColor)
+        button.color = UIColor(hex: settings.primaryColor)
         
         window.windowLevel = UIWindow.Level(rawValue: CGFloat.greatestFiniteMagnitude)
         window.isHidden = false
