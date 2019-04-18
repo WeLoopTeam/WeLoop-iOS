@@ -69,7 +69,7 @@ extension WeLoopViewController: WKScriptMessageHandler {
         case .getCapture:
            sendScreenshot()
         default:
-            print(message.body)
+            break
         }
     }
 }

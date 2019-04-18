@@ -18,7 +18,7 @@
 		6917D400023C2AF1454BDFCCAB63B884 /* WeLoop-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 615EF3E3AE5ECEB962F2A77E11BFD139 /* WeLoop-dummy.m */; };
 		6E57E333F06EC6958567866463C8944F /* Pods-WeLoop_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 607035E11E47FBC889974FA4DF8F5339 /* Pods-WeLoop_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7375AB9DDE8530260E068EEA9FE307D4 /* UIImage+base64.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39154EC9CF136A30123644BF2FCD778A /* UIImage+base64.swift */; };
-		7FD62ADA68756BFD2039936DC93324C3 /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E36361AE53409CFE1A89E7917EA9B1 /* Authentication.swift */; };
+		7FD62ADA68756BFD2039936DC93324C3 /* WeLoop+Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E36361AE53409CFE1A89E7917EA9B1 /* WeLoop+Authentication.swift */; };
 		8392DCF8AEC6A526ED565EC374547B09 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7916AD5B905AEFA1A59A84E43143CCF /* Project.swift */; };
 		85CC56C9E16CFB7B991AF30300CFA377 /* WeLoopButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C8DCB67CBD45EDAADCA0DD4BCA480D /* WeLoopButton.swift */; };
 		8B01A0D98C456E28D2E0757F9BE3DB29 /* WeLoopError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AFD618ED15933B3FA8D278209E3D9E /* WeLoopError.swift */; };
@@ -53,15 +53,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1FA5559108592484EBE4FF9FF0A51E6F /* WeLoop.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = WeLoop.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		21E36361AE53409CFE1A89E7917EA9B1 /* Authentication.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Authentication.swift; path = WeLoop/Classes/Authentication.swift; sourceTree = "<group>"; };
+		1FA5559108592484EBE4FF9FF0A51E6F /* WeLoop.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = WeLoop.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		21E36361AE53409CFE1A89E7917EA9B1 /* WeLoop+Authentication.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "WeLoop+Authentication.swift"; path = "WeLoop/Classes/WeLoop+Authentication.swift"; sourceTree = "<group>"; };
 		24F4167C9FD94EDAEAAD5B7F4EF7A2B0 /* Pods-WeLoop_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-WeLoop_Example.release.xcconfig"; sourceTree = "<group>"; };
 		32D6DC2A0F37CE42E2A9CCBC14EF21CD /* Pods-WeLoop_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-WeLoop_Tests.modulemap"; sourceTree = "<group>"; };
 		36DCF2F6C22BF352A247E68D949B3B7E /* Pods-WeLoop_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-WeLoop_Example-Info.plist"; sourceTree = "<group>"; };
 		39154EC9CF136A30123644BF2FCD778A /* UIImage+base64.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIImage+base64.swift"; sourceTree = "<group>"; };
-		3B2890BE089EF781C7E940262774E4A4 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		3B2890BE089EF781C7E940262774E4A4 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		3C9A47657035BB5EDC65AD86D25819DB /* Pods-WeLoop_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-WeLoop_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		4315451B98DEFA405893EEA1754D3037 /* Pods_WeLoop_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_WeLoop_Example.framework; path = "Pods-WeLoop_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4315451B98DEFA405893EEA1754D3037 /* Pods_WeLoop_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeLoop_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		46B283933C46DCD3BA50DBB6F06B1455 /* CMAcceleration+norm.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "CMAcceleration+norm.swift"; sourceTree = "<group>"; };
 		476C56C392F9CFFEE5BE6A2505F66D21 /* JSONEncoder+keyEncodingStrategy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "JSONEncoder+keyEncodingStrategy.swift"; sourceTree = "<group>"; };
 		4887070AC1C4A8BE0345053CEA341D05 /* WeLoop.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = WeLoop.swift; path = WeLoop/Classes/WeLoop.swift; sourceTree = "<group>"; };
@@ -79,7 +79,7 @@
 		883B26D0CE374D2314545718AE8F3888 /* WeLoop.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = WeLoop.xcconfig; sourceTree = "<group>"; };
 		90AFD618ED15933B3FA8D278209E3D9E /* WeLoopError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = WeLoopError.swift; path = WeLoop/Classes/WeLoopError.swift; sourceTree = "<group>"; };
 		96229BC526543823A80F160DA0C98C15 /* Pods-WeLoop_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-WeLoop_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A6C71D12B31315BE8FACEEC6B19C2CBA /* Images.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = WeLoop/Assets/Images.xcassets; sourceTree = "<group>"; };
 		A7916AD5B905AEFA1A59A84E43143CCF /* Project.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
 		A8D15E7D7075B83C8039F87462508BE3 /* WeLoop-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "WeLoop-Info.plist"; sourceTree = "<group>"; };
@@ -87,16 +87,16 @@
 		AF4DE66B807706D144B2654A8171AD92 /* FloatingButtonController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FloatingButtonController.swift; path = WeLoop/Classes/FloatingButtonController.swift; sourceTree = "<group>"; };
 		B7C2361F2361F23CD4C3A21422E60B1C /* Pods-WeLoop_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-WeLoop_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		BABFC8AF3EE5608300CFA1792B4EDEC9 /* Settings.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
-		BC11CB9E19A42A16292DE82A5399ED0C /* WeLoop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = WeLoop.framework; path = WeLoop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC11CB9E19A42A16292DE82A5399ED0C /* WeLoop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WeLoop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9F2F1A3AE273AD528183F5E733901ED /* Pods-WeLoop_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-WeLoop_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		D1698BD8E6445DCB74878D40982A4194 /* UIColor+hex.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIColor+hex.swift"; sourceTree = "<group>"; };
 		D1BD0FE79DDDE79DC5FCDB0AB297C3E5 /* Pods-WeLoop_Tests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-WeLoop_Tests-Info.plist"; sourceTree = "<group>"; };
 		DF5F02288DE6632F93A76D2A07F907D6 /* Pods-WeLoop_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-WeLoop_Tests-umbrella.h"; sourceTree = "<group>"; };
-		E0270574154DE3B1651543A7D87B02A9 /* Pods_WeLoop_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_WeLoop_Tests.framework; path = "Pods-WeLoop_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E0270574154DE3B1651543A7D87B02A9 /* Pods_WeLoop_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeLoop_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E29FEECB1964AB1780BBA38F9851D3D9 /* User.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		EB2192CE1DA861B4F6CCC52F81555603 /* window+screenshot.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "window+screenshot.swift"; sourceTree = "<group>"; };
-		F0F4E7831EA869D6326528774B4C362C /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		F0F4E7831EA869D6326528774B4C362C /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		F14CB5A5BD94319F4AB0229DBFDBF93F /* Pods-WeLoop_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-WeLoop_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		F2DA175FA2316D5E1C2CFFC5550D7385 /* WeLoop-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "WeLoop-prefix.pch"; sourceTree = "<group>"; };
 		F4A96546C5A781D614DE224E3980A997 /* Pods-WeLoop_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-WeLoop_Example.modulemap"; sourceTree = "<group>"; };
@@ -199,7 +199,7 @@
 		9541205CD5CD3A5A1B9C3CBC1065C2AB /* WeLoop */ = {
 			isa = PBXGroup;
 			children = (
-				21E36361AE53409CFE1A89E7917EA9B1 /* Authentication.swift */,
+				21E36361AE53409CFE1A89E7917EA9B1 /* WeLoop+Authentication.swift */,
 				AF4DE66B807706D144B2654A8171AD92 /* FloatingButtonController.swift */,
 				60E4E4688C807350AEC33287B2AEEB13 /* ShakeGestureDetector.swift */,
 				4887070AC1C4A8BE0345053CEA341D05 /* WeLoop.swift */,
@@ -395,6 +395,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
@@ -455,7 +456,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7FD62ADA68756BFD2039936DC93324C3 /* Authentication.swift in Sources */,
+				7FD62ADA68756BFD2039936DC93324C3 /* WeLoop+Authentication.swift in Sources */,
 				B97D634C59915F0A58A3856D1E1E59B4 /* CMAcceleration+norm.swift in Sources */,
 				CC7184DB8FAA9EB52B83A062409CF5EC /* FloatingButtonController.swift in Sources */,
 				1C743A10EFEA7FCB902F5AD4563FC18B /* JSONEncoder+keyEncodingStrategy.swift in Sources */,
@@ -773,8 +774,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 4.2;
 				SYMROOT = "${SRCROOT}/../build";
 			};

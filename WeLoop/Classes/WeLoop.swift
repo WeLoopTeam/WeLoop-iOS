@@ -20,17 +20,18 @@ import UIKit
     @objc optional func failedToLaunch(with error: Error)
 }
 
-private let rootURL = "https://staging.getweloop.io/app/plugin/index/#"
-
 public class WeLoop: NSObject {
 
     // MARK: Authentication
     
     /// The apiKey (or project GUID) passed during initialization
-    private var apiKey: String?
+    var apiKey: String?
     
     /// The authentication method passed during initialization
-    private var autoAuthentication: Bool = true
+    var autoAuthentication: Bool = true
+    
+    /// The user domain used in the api and app urls
+    var domain: String? = nil
     
     /// The associated WeLoop project. Must be loaded before trying to invoke the Weloop widget.
     /// Its value is loaded during the initialization phase.
@@ -80,8 +81,10 @@ public class WeLoop: NSObject {
     ///   - apiKey: your project Guid
     ///   - autoAuthentication: Default is true. If set to false, the user will have to provide its own credentials inside the widget.
     ///     if autoAuthentication is set to true, you'll have to provide the logged in user infos by calling `identifyUser`
-    @objc public static func initialize(apiKey: String, autoAuthentication: Bool = true) {
-        shared.initialize(apiKey: apiKey, autoAuthentication: autoAuthentication)
+    ///   - domain: Default to nil. You can specify a domain if your WeLoop urls are customized. For example if your WeLoop App url is `"https://myCompany.getweloop.io/"`
+    ///     pass `"myCompany"` for this parameter.
+    @objc public static func initialize(apiKey: String, autoAuthentication: Bool = true, domain: String? = nil) {
+        shared.initialize(apiKey: apiKey, autoAuthentication: autoAuthentication, domain: domain)
     }
     
     /// Identify the user
@@ -128,13 +131,14 @@ public class WeLoop: NSObject {
         super.init()
     }
     
-    func initialize(apiKey: String, autoAuthentication: Bool = true) {
+    func initialize(apiKey: String, autoAuthentication: Bool = true, domain: String? = nil) {
         self.apiKey = apiKey
         self.autoAuthentication = autoAuthentication
+        self.domain = domain
         authenticationTask?.cancel()
         authenticationError = nil
         
-        let dataTask = authenticate(apiKey: apiKey, autoAuthentication: autoAuthentication, completionHandler: { (project)  in
+        let dataTask = authenticate(completionHandler: { (project)  in
             do {
                 let project = try project()
                 self.project = project
@@ -224,7 +228,7 @@ public class WeLoop: NSObject {
        
         let settingsParams = try project.settings.queryParams()
         
-        var urlString = "\(rootURL)/\(apiKey)/project/conversations?params=\(settingsParams)"
+        var urlString = "\(appURL())/\(apiKey)/project/conversations?params=\(settingsParams)"
 
         if autoAuthentication, let user = user {
             let userParams = try user.queryParams()

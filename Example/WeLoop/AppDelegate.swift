@@ -12,8 +12,11 @@ import WeLoop
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    /// Change this setting to test between autoAuthentication and manual Authentication
+    // Change this setting to test between autoAuthentication and manual Authentication
     private let autoAuthentication: Bool = true
+    
+    // This is a fake project GUID. Replace it with your actual project ID to test the example
+    private let projectGUID = "12345678-abcd-efgh-l33t-123456789abc"
     
     var window: UIWindow?
 
@@ -27,11 +30,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         if autoAuthentication {
             // Auto Authentication flow
-            WeLoop.initialize(apiKey: "a8632a59-ab81-456e-a4db-0cd6611ee94d");
-            WeLoop.identifyUser(firstName: "Paseuth", lastName: "Thammavong", email: "paseuth.thammavong@weloop.io")
+            WeLoop.initialize(apiKey: projectGUID, autoAuthentication: true);
+            WeLoop.identifyUser(firstName: "John", lastName: "Doe", email: "john.doe@weloop.io")
         } else {
             // Manual Authentication flow
-            WeLoop.initialize(apiKey: "a8632a59-ab81-456e-a4db-0cd6611ee94d", autoAuthentication: false);
+            WeLoop.initialize(apiKey: projectGUID, autoAuthentication: false);
             // No need to call identify user
         }
         
