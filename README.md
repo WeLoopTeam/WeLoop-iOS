@@ -11,6 +11,7 @@
 ## Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
+
 Inside the AppDelegate.swift, update the dummy `projectGUID` with your own.
 
 ## Requirements
