@@ -46,6 +46,14 @@ WeLoop.identifyUser(firstName: "John", lastName: "Doe", email: "john.doe@weloop.
 WeLoop.initialize(apiKey: "YOUR_PROJECT_GUID", autoAuthentication: false);
 ```
 
+Finally, if you have a weloop url with a customized subdomain, like `"https://myCompany.getweloop.io/"`, you'll need to specify a subdomain when initializing WeLoop:
+
+
+```swift
+WeLoop.initialize(apiKey: "YOUR_PROJECT_GUID", autoAuthentication: true, subdomain: "myCompany");
+```
+
+
 ### Invocation method
 
 You can choose between different methods to invoke the WeLoop widget inside your application:
