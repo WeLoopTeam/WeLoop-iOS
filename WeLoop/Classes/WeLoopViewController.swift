@@ -28,19 +28,29 @@ class WeLoopViewController: UIViewController {
         return config
     }()
     
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureWebview()
     }
-    
-    override var prefersStatusBarHidden: Bool {
-        return true
-    }
 
     private func configureWebview() {
-        let webView = WKWebView(frame: view.bounds, configuration: self.configuration)
+        let webView = FullScreenWKWebView(frame: view.bounds, configuration: self.configuration)
         view.addSubview(webView)
         webView.allowsLinkPreview = false
+        webView.scrollView.delegate = self
+        webView.scrollView.bounces = false
+        
+        webView.translatesAutoresizingMaskIntoConstraints = false
+        webView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true;
+        webView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true;
+        webView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true;
+        webView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true;
+        
+        webView.scrollView.showsVerticalScrollIndicator = false
         self.webView = webView
         loadWeLoop()
     }
@@ -71,5 +81,11 @@ extension WeLoopViewController: WKScriptMessageHandler {
         default:
             break
         }
+    }
+}
+
+extension WeLoopViewController: UIScrollViewDelegate {
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        return nil
     }
 }
