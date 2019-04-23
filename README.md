@@ -12,6 +12,8 @@
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
+Inside the AppDelegate.swift, update the dummy `projectGUID` with your own.
+
 ## Requirements
 
 Since WeLoop builds in swift 5.0, Xcode 10.2 is required to build the project.
