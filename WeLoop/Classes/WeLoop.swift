@@ -56,9 +56,12 @@ public class WeLoop: NSObject {
   
     // MARK: Object references
     
-    /// A reference to the previous controller in the window when the widget is invoked. Used to restore
+    /// A reference to the previous window when the widget is invoked. Used to restore
     /// the app's state when the widget is dismissed
-    private var previousViewController: UIViewController?
+    private var previousWindow: UIWindow?
+    
+    /// A reference to the widget with containing the webview
+    private var weLoopViewController: WeLoopViewController?
     
     /// A reference to the controller containing the floating action button
     private var fabController: FloatingButtonController?
@@ -131,6 +134,11 @@ public class WeLoop: NSObject {
         super.init()
     }
     
+    var isShowingWidget: Bool {
+        guard let widgetVC = weLoopViewController else { return false }
+        return widgetVC.window.isKeyWindow && previousWindow == nil
+    }
+    
     func initialize(apiKey: String, autoAuthentication: Bool = true, subdomain: String? = nil) {
         self.apiKey = apiKey
         self.autoAuthentication = autoAuthentication
@@ -143,6 +151,7 @@ public class WeLoop: NSObject {
                 let project = try project()
                 self.project = project
                 self.setupInvocation(settings: project.settings)
+                try self.initializeWidget()
                 self.delegate?.initializationSuccessful?()
             } catch (let error) {
                 self.authenticationError = error
@@ -166,26 +175,12 @@ public class WeLoop: NSObject {
 
     @objc func invokeSelector() {
         do {
-            // Another instance of the widget is already present.
-            guard previousViewController == nil else { return }
-            
-            let url = try widgetURL()
-            let widgetVC = WeLoopViewController()
-            widgetVC.url = url
-            try showWidget(viewController: widgetVC)
-            
+            guard !isShowingWidget else { return }
+            try showWidget()
         } catch (let error) {
             print(error)
             delegate?.failedToLaunch?(with: error)
         }
-    }
-    
-    /// Close the widget, and show the previous view controller instead
-    func close() {
-        guard let viewController = previousViewController, let project = project, let window = UIApplication.shared.keyWindow else { return }
-        previousViewController = nil
-        window.rootViewController = viewController
-        setupInvocation(settings: project.settings)
     }
     
     private func setupInvocation(settings: Settings) {
@@ -212,13 +207,31 @@ public class WeLoop: NSObject {
         }
     }
     
-    private func showWidget(viewController: WeLoopViewController) throws {
+    private func initializeWidget() throws {
+        let url = try widgetURL()
+        let widgetVC = WeLoopViewController()
+        widgetVC.url = url
+        self.weLoopViewController = widgetVC
+    }
+    
+    private func showWidget() throws {
         guard let keyWindow = UIApplication.shared.keyWindow else { throw WeLoopError.windowMissing  }
         
         screenshot = keyWindow.takeScreenshot()
         disableInvocation(method: invocationMethod)
-        previousViewController = keyWindow.rootViewController
-        UIApplication.shared.keyWindow?.rootViewController = viewController
+        keyWindow.resignKey()
+        weLoopViewController?.window.becomeKey()
+        weLoopViewController?.window.isHidden = false
+        previousWindow = keyWindow
+    }
+    
+    /// Close the widget, and show the previous window instead
+    func closeWidget() {
+        guard let project = project, let window = previousWindow else { return }
+        weLoopViewController?.window.resignKey()
+        weLoopViewController?.window.isHidden = true
+        window.makeKeyAndVisible()
+        setupInvocation(settings: project.settings)
     }
     
     private func widgetURL() throws -> URL {
