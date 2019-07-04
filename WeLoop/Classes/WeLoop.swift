@@ -205,7 +205,10 @@ public class WeLoop: NSObject {
             ShakeGestureDetector.shared.startAccelerometers()
             ShakeGestureDetector.shared.delegate = self
         case .fab:
-            fabController = FloatingButtonController(position: preferredButtonPosition, settings: settings)
+            if fabController == nil {
+                fabController = FloatingButtonController(position: preferredButtonPosition, settings: settings)
+            }
+            fabController?.view.isHidden = false
            break
         default: break
         }
@@ -217,8 +220,7 @@ public class WeLoop: NSObject {
             ShakeGestureDetector.shared.stopAccelerometers()
             ShakeGestureDetector.shared.delegate = nil
         case .fab:
-            fabController?.tearDown()
-            fabController = nil
+            fabController?.view.isHidden = true
         default: break
         }
     }
