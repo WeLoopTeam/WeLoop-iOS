@@ -12,6 +12,7 @@ import Foundation
     case missingUserIdentification
     case accessDenied
     case authenticationDataMissing
+    case notificationDataMissing
     case windowMissing
     case authenticationInProgress
 }
@@ -25,6 +26,8 @@ extension WeLoopError: CustomStringConvertible {
             return "User info is missing. Make sure to call the `identifyUser` function first"
         case .accessDenied:
             return "You don't have access to this WeLoop project. Try with another project ID"
+        case .notificationDataMissing:
+            return "We could not parse the response of the notification refresh call because the data is missing"
         case .authenticationDataMissing:
             return "We could not parse the response of the authentication call because the data is missing"
         case .windowMissing:

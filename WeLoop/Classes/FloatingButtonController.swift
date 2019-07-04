@@ -82,6 +82,10 @@ class FloatingButtonController: UIViewController {
         view.setNeedsLayout()
     }
     
+    func setNotificationBadge(hidden: Bool) {
+        self.button.setBadge(hidden: hidden)
+    }
+    
     @objc func keyboardDidShow(notification: NSNotification) {
         window.windowLevel = UIWindow.Level(rawValue: 0)
     }

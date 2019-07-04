@@ -38,7 +38,7 @@ public class WeLoop: NSObject {
     private var project: Project?
     
     /// The current app user. Must be set before the widget can be loaded
-    private var user: User?
+    internal var user: User?
     
     /// A ref to an error that occurred during the authentication. Will be passed down to the delegate the next time `invoke` is called
     private var authenticationError: Error?
@@ -53,6 +53,9 @@ public class WeLoop: NSObject {
     
     /// The preferred invocation method for the SDK. Must be set using `setInvocationMethod`
     var invocationMethod: WeLoopInvocation = .manual
+    
+    /// The time interval between each notification refresh call. Must be set using `setNotificationRefreshInterval`
+    var refreshInterval: TimeInterval = 30.0
   
     // MARK: Object references
     
@@ -65,6 +68,9 @@ public class WeLoop: NSObject {
     
     /// A reference to the controller containing the floating action button
     private var fabController: FloatingButtonController?
+    
+    /// A reference to the polling timer to refresh notifications
+    private var notificationRefreshTimer: Timer?
     
     /// A screenshot of the window is taken right before invoking the SDK. This is a ref to this screenshot
     var screenshot: UIImage?
@@ -125,18 +131,26 @@ public class WeLoop: NSObject {
         shared.fabController?.updatePosition(position)
     }
     
+    /// Set the preferred time interval between two calls to refresh the notifications on the weloop project.
+    /// You **must** call this before calling `initialize` if you wish to customize this parameter.
+    ///
+    /// - Parameter position: the desired time elapsed between each notification refresh
+    @objc public static func set(notificationRefreshInterval interval: TimeInterval) {
+        shared.refreshInterval = interval
+    }
     
     // MARK: - Internal API
 
-    
     /// Initializer is made private to prevent clients from creating any other instances
     private override init() {
         super.init()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(startNotificationPolling), name: UIApplication.willEnterForegroundNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(stopNotificationPolling), name: UIApplication.willResignActiveNotification, object: nil)
     }
     
-    var isShowingWidget: Bool {
-        guard let widgetVC = weLoopViewController else { return false }
-        return widgetVC.window.isKeyWindow && previousWindow == nil
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
     func initialize(apiKey: String, autoAuthentication: Bool = true, subdomain: String? = nil) {
@@ -152,6 +166,7 @@ public class WeLoop: NSObject {
                 self.project = project
                 self.setupInvocation(settings: project.settings)
                 try self.initializeWidget()
+                self.startNotificationPolling()
                 self.delegate?.initializationSuccessful?()
             } catch (let error) {
                 self.authenticationError = error
@@ -161,6 +176,8 @@ public class WeLoop: NSObject {
         authenticationTask = dataTask
         dataTask?.resume()
     }
+    
+    // MARK: Invocation
     
     func set(invocationMethod method: WeLoopInvocation) {
         let oldInvocation = invocationMethod
@@ -178,7 +195,6 @@ public class WeLoop: NSObject {
             guard !isShowingWidget else { return }
             try showWidget()
         } catch (let error) {
-            print(error)
             delegate?.failedToLaunch?(with: error)
         }
     }
@@ -205,6 +221,13 @@ public class WeLoop: NSObject {
             fabController = nil
         default: break
         }
+    }
+    
+    // MARK: Widget
+    
+    var isShowingWidget: Bool {
+        guard let widgetVC = weLoopViewController else { return false }
+        return widgetVC.window.isKeyWindow && previousWindow == nil
     }
     
     private func initializeWidget() throws {
@@ -241,8 +264,7 @@ public class WeLoop: NSObject {
        
         let settingsParams = try project.settings.queryParams()
         
-        var urlString = "\(appURL())/\(apiKey)/project/conversations?params=\(settingsParams)"
-
+        var urlString = "\(appURL)/\(apiKey)/project/conversations?params=\(settingsParams)"
         if autoAuthentication, let user = user {
             let userParams = try user.queryParams()
             urlString.append("&auto=\(userParams)")
@@ -250,6 +272,30 @@ public class WeLoop: NSObject {
             throw WeLoopError.missingUserIdentification
         }
         return URL(string: urlString)!
+    }
+    
+    // MARK: Notification Badge
+    
+    @objc private func startNotificationPolling() {
+        notificationRefreshTimer?.invalidate()
+        notificationRefreshTimer = Timer(timeInterval: refreshInterval, target: self, selector: #selector(refreshNotificationBadge), userInfo: nil, repeats: true)
+        RunLoop.main.add(notificationRefreshTimer!, forMode: .default)
+    }
+    
+    @objc private func stopNotificationPolling() {
+        notificationRefreshTimer?.invalidate()
+        notificationRefreshTimer = nil
+    }
+    
+    @objc func refreshNotificationBadge() {
+        refreshNotificationCount { [weak self] (response) in
+            do {
+                let notification = try response()
+                self?.fabController?.setNotificationBadge(hidden: !notification.isNotif)
+            } catch let (error) {
+                print(error)
+            }
+        }
     }
 }
 

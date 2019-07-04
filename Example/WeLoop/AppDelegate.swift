@@ -22,6 +22,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
+        // Set the refresh interval to display a notification badge. Do this before initializing the SDK
+        WeLoop.set(notificationRefreshInterval: 5.0)
+        
         // Set the invocation preferences. You can always change them after invoking the SDK
         WeLoop.set(preferredButtonPosition: .bottomRight)
         WeLoop.set(invocationMethod: .fab)
