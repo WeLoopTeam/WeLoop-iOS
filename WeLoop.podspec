@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'WeLoop'
-  s.version          = '0.2.3'
+  s.version          = '1.0.0'
   s.summary          = 'Integrate WeLoop to your iOS project'
 
   s.description      = <<-DESC

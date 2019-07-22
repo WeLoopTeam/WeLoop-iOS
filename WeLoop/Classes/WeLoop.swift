@@ -55,6 +55,7 @@ public class WeLoop: NSObject {
     var invocationMethod: WeLoopInvocation = .manual
     
     /// The time interval between each notification refresh call. Must be set using `setNotificationRefreshInterval`
+    /// This will only be useful is autoAuthentication has been set to true.
     var refreshInterval: TimeInterval = 30.0
   
     // MARK: Object references
@@ -248,11 +249,13 @@ public class WeLoop: NSObject {
         weLoopViewController?.window.becomeKey()
         weLoopViewController?.window.isHidden = false
         previousWindow = keyWindow
+        stopNotificationPolling()
     }
     
     /// Close the widget, and show the previous window instead
     func closeWidget() {
         guard let project = project, let window = previousWindow else { return }
+        startNotificationPolling()
         weLoopViewController?.window.resignKey()
         weLoopViewController?.window.isHidden = true
         window.makeKeyAndVisible()
@@ -279,6 +282,8 @@ public class WeLoop: NSObject {
     // MARK: Notification Badge
     
     @objc private func startNotificationPolling() {
+        guard autoAuthentication else { return }
+        
         notificationRefreshTimer?.invalidate()
         notificationRefreshTimer = Timer(timeInterval: refreshInterval, target: self, selector: #selector(refreshNotificationBadge), userInfo: nil, repeats: true)
         RunLoop.main.add(notificationRefreshTimer!, forMode: .default)
