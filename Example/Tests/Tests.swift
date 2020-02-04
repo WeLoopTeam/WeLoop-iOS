@@ -9,45 +9,8 @@ class Tests: XCTestCase {
         do {
             let settings = try JSONDecoder().decode(Settings.self, from: settingsData)
             XCTAssertEqual(settings.iconUrl, "")
-            XCTAssertEqual(settings.isBlur, false)
             XCTAssertEqual(settings.message, "")
             XCTAssertEqual(settings.position, "right")
-            XCTAssertEqual(settings.primaryColor, "#ff5c80")
-            XCTAssertEqual(settings.secondaryColor, "#ff5c80")
-            XCTAssertEqual(settings.language, "EN")
-        } catch (let error) {
-            XCTFail(error.localizedDescription)
-        }
-    }
-    
-    func testSettingsBase64Encoding() {
-        do {
-           
-            let queryParam = try JSONDecoder().decode(Settings.self, from: settingsData).queryParams()
-            try testBase64ObjectsEqual(string1: queryParam, string2: settingsBase64)
-            
-        } catch (let error) {
-            XCTFail(error.localizedDescription)
-        }
-    }
-    
-    func testUserEncoding() {
-        do {
-            let user = try JSONDecoder().decode(User.self, from: userData)
-            XCTAssertEqual(user.email, "paseuh.thammavong@weloop.io")
-            XCTAssertEqual(user.firstName, "Paseuth")
-            XCTAssertEqual(user.lastName, "Thammavong")
-        } catch (let error) {
-            XCTFail(error.localizedDescription)
-        }
-    }
-    
-    func testUserBase64Encoding() {
-        do {
-            
-            let queryParam = try JSONDecoder().decode(User.self, from: userData).queryParams()
-            try testBase64ObjectsEqual(string1: queryParam, string2: userBase64)
-            
         } catch (let error) {
             XCTFail(error.localizedDescription)
         }

@@ -24,4 +24,6 @@ extension UIColor {
         guard let hexInt = Int(parsedHex, radix: 16) else { return nil }
         self.init(hex: hexInt)
     }
+    
+    static let weLoopDefault = UIColor(hex: 0x422fff)
 }

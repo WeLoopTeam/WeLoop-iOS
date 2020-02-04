@@ -45,9 +45,8 @@ class FloatingButtonController: UIViewController {
         self.position = position
         self.button = WeLoopButton(frame: .zero)
         super.init(nibName: nil, bundle: nil)
-        
-        button.color = UIColor(hex: settings.primaryColor)
-        
+
+        configureButton(settings: settings)
         window.windowLevel = UIWindow.Level(rawValue: CGFloat.greatestFiniteMagnitude)
         window.isHidden = false
         window.rootViewController = self
@@ -56,6 +55,27 @@ class FloatingButtonController: UIViewController {
 
         NotificationCenter.default.addObserver(self, selector: #selector(FloatingButtonController.keyboardDidShow(notification:)), name: UIResponder.keyboardDidShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(FloatingButtonController.keyboardDidHide(notification:)), name: UIResponder.keyboardDidHideNotification, object: nil)
+    }
+    
+    func configureButton(settings: Settings) {
+        guard let urlString = settings.iconUrl, let url = URL(string: urlString) else {
+            button.color = settings.primaryColor
+            button.setImage(UIImage.weLoopIcon(), for: .normal)
+            return
+        }
+    
+        DispatchQueue.global(qos: .userInitiated).async {
+            let imageData:NSData = NSData(contentsOf: url)!
+            
+            DispatchQueue.main.async {
+                let imageView = UIImageView(frame: self.button.bounds)
+                imageView.clipsToBounds = true
+                imageView.contentMode = .scaleAspectFill
+                imageView.image = UIImage(data: imageData as Data)
+                imageView.layer.cornerRadius = 
+                self.button.addSubview(imageView)
+            }
+        }
     }
     
     func tearDown() {

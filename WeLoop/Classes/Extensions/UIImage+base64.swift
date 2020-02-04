@@ -15,4 +15,9 @@ extension UIImage {
         guard let base64Data = self.jpegData(compressionQuality: 0.95)?.base64EncodedData() else { return nil }
         return String(data: base64Data, encoding: .utf8)
     }
+    
+    static func weLoopIcon() -> UIImage?  {
+        let bundle = Bundle(for: WeLoopButton.self)
+        return UIImage(named: "WeLoopIcon", in: bundle, compatibleWith: nil)
+    }
 }

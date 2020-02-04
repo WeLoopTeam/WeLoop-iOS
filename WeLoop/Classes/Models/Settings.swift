@@ -8,28 +8,41 @@
 import Foundation
 
 struct Settings: Codable {
-    let iconUrl: String
-    let message: String
-    let position: String;
-    let primaryColor: String;
-    let secondaryColor: String;
-    let isBlur: Bool?;
-    let language: String?;
+    
+    let iconUrl: String?
+    let message: String?
+    let position: String?;
+    let rgb: Color?
+    let language: String;
+    
+    var primaryColor: UIColor {
+        guard let rgb = rgb else { return UIColor.weLoopDefault }
+        return UIColor(red: rgb.r / 255, green: rgb.g / 255, blue: rgb.b / 255, alpha: rgb.a)
+    }
     
     private enum CodingKeys: String, CodingKey {
-        case iconUrl = "Setting_IconUrl"
-        case message = "Setting_Message"
-        case position = "Setting_Position"
-        case primaryColor = "Setting_PrimaryColor"
-        case secondaryColor = "Setting_SecondaryColor"
-        case isBlur = "Setting_IsBlur"
-        case language = "Setting_lang"
+        case iconUrl = "Widget_Icon"
+        case message = "Widget_Message"
+        case position = "Widget_Position"
+        case rgb = "Widget_PrimaryColor"
+        case language = "Language"
     }
     
-    func queryParams() throws -> String {
-        let encoder = JSONEncoder()
-        encoder.keyEncodingStrategy = .convertToFirstLowerCased
-        let param = try encoder.encode(self)
-        return param.base64EncodedString()
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.iconUrl = try container.decodeIfPresent(String.self, forKey: .iconUrl)
+        self.message = try container.decodeIfPresent(String.self, forKey: .message)
+        self.position = try container.decodeIfPresent(String.self, forKey: .position)
+        self.rgb = try container.decodeIfPresent(Color.self, forKey: .rgb)
+        self.language = try container.decodeIfPresent(String.self, forKey: .language) ?? "EN"
     }
 }
+
+
+struct Color: Codable {
+    let r: CGFloat
+    let g: CGFloat
+    let b: CGFloat
+    let a: CGFloat
+}
+

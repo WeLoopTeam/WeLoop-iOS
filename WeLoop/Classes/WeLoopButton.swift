@@ -40,10 +40,10 @@ class WeLoopButton: UIButton {
     }
     
     func setup() {
-        setImage(weLoopIcon(), for: .normal)
+        
         layer.shadowColor = UIColor.black.cgColor
         layer.shadowRadius = 3
-        layer.shadowOpacity = 0.5
+        layer.shadowOpacity = 0.9
         layer.shadowOffset = CGSize.zero
         
         layer.cornerRadius = size / 2
@@ -79,11 +79,4 @@ class WeLoopButton: UIButton {
     func setBadge(hidden: Bool) {
         badge.isHidden = hidden
     }
-    
-    private func weLoopIcon() -> UIImage?  {
-        let bundle = Bundle(for: WeLoopButton.self)
-        return UIImage(named: "WeLoopIcon", in: bundle, compatibleWith: nil)
-    }
-    
-    
 }

@@ -27,21 +27,11 @@ public class WeLoop: NSObject {
     /// The apiKey (or project GUID) passed during initialization
     var apiKey: String?
     
-    /// The authentication method passed during initialization
-    var autoAuthentication: Bool = true
-    
-    /// The user subdomain used in the api and app urls
-    var subdomain: String? = nil
-    
-    /// The associated WeLoop project. Must be loaded before trying to invoke the Weloop widget.
-    /// Its value is loaded during the initialization phase.
-    private var project: Project?
-    
-    /// The current app user. Must be set before the widget can be loaded
-    internal var user: User?
+    /// The widget settings object return by WeLoop API
+    internal var settings: Settings?
     
     /// A ref to an error that occurred during the authentication. Will be passed down to the delegate the next time `invoke` is called
-    private var authenticationError: Error?
+    private var configurationError: Error?
     
     /// A ref to the authentication, to cancel an existing previous task
     private var authenticationTask: URLSessionDataTask?
@@ -89,22 +79,9 @@ public class WeLoop: NSObject {
     ///
     /// - Parameters:
     ///   - apiKey: your project Guid
-    ///   - autoAuthentication: Default is true. If set to false, the user will have to provide its own credentials inside the widget.
-    ///     if autoAuthentication is set to true, you'll have to provide the logged in user infos by calling `identifyUser`
-    ///   - domain: Default to nil. You can specify a domain if your WeLoop urls are customized. For example if your WeLoop App url is `"https://myCompany.getweloop.io/"`
-    ///     pass `"myCompany"` for this parameter.
-    @objc public static func initialize(apiKey: String, autoAuthentication: Bool = true, subdomain: String? = nil) {
-        shared.initialize(apiKey: apiKey, autoAuthentication: autoAuthentication, subdomain: subdomain)
+    @objc public static func initialize(apiKey: String) {
+        shared.initialize(apiKey: apiKey)
     }
-    
-    /// Identify the user
-    ///
-    /// - Important: You **have** to call this method before the SDK can be invoked if you chose autoAuthentication in the `initialize` function
-    @objc public static func identifyUser(firstName: String, lastName: String, email: String) {
-        let user = User(firstName: firstName, lastName: lastName, email: email)
-        shared.user = user
-    }
-    
     
     /// Set a delegate to handle issues when invoking the widget. 
     ///
@@ -154,23 +131,20 @@ public class WeLoop: NSObject {
         NotificationCenter.default.removeObserver(self)
     }
     
-    func initialize(apiKey: String, autoAuthentication: Bool = true, subdomain: String? = nil) {
+    func initialize(apiKey: String) {
         self.apiKey = apiKey
-        self.autoAuthentication = autoAuthentication
-        self.subdomain = subdomain
         authenticationTask?.cancel()
-        authenticationError = nil
+        configurationError = nil
         
-        let dataTask = authenticate(completionHandler: { (project)  in
+        let dataTask = widgetConfiguration(completionHandler: { (settings)  in
             do {
-                let project = try project()
-                self.project = project
-                self.setupInvocation(settings: project.settings)
+                let widgetSettings = try settings()
+                self.setupInvocation(settings: widgetSettings)
                 try self.initializeWidget()
                 self.startNotificationPolling()
                 self.delegate?.initializationSuccessful?()
             } catch (let error) {
-                self.authenticationError = error
+                self.configurationError = error
                 self.delegate?.initializationFailed?(with: error)
             }
         })
@@ -184,11 +158,11 @@ public class WeLoop: NSObject {
         let oldInvocation = invocationMethod
         invocationMethod = method
         
-        guard oldInvocation != method, let project = project else { return }
+        guard oldInvocation != method, let settings = settings else { return }
         
         disableInvocation(method: oldInvocation)
         invocationMethod = method
-        setupInvocation(settings: project.settings)
+        setupInvocation(settings: settings)
     }
 
     @objc func invokeSelector() {
@@ -244,46 +218,32 @@ public class WeLoop: NSObject {
         guard let keyWindow = UIApplication.shared.keyWindow else { throw WeLoopError.windowMissing  }
         
         screenshot = keyWindow.takeScreenshot()
-        disableInvocation(method: invocationMethod)
         keyWindow.resignKey()
         weLoopViewController?.window.becomeKey()
         weLoopViewController?.window.isHidden = false
         previousWindow = keyWindow
         stopNotificationPolling()
+        disableInvocation(method: invocationMethod)
     }
     
     /// Close the widget, and show the previous window instead
     func closeWidget() {
-        guard let project = project, let window = previousWindow else { return }
+        guard let settings = settings, let window = previousWindow else { return }
         startNotificationPolling()
         weLoopViewController?.window.resignKey()
         weLoopViewController?.window.isHidden = true
         window.makeKeyAndVisible()
-        setupInvocation(settings: project.settings)
+        setupInvocation(settings: settings)
     }
     
     private func widgetURL() throws -> URL {
-        if let error = authenticationError { throw error }
         guard let apiKey = apiKey else { throw WeLoopError.missingAPIKey }
-        guard let project = project else { throw WeLoopError.authenticationInProgress }
-       
-        let settingsParams = try project.settings.queryParams()
-        
-        var urlString = "\(appURL)/\(apiKey)/project/conversations?params=\(settingsParams)"
-        if autoAuthentication, let user = user {
-            let userParams = try user.queryParams()
-            urlString.append("&auto=\(userParams)")
-        } else if autoAuthentication && user == nil {
-            throw WeLoopError.missingUserIdentification
-        }
-        return URL(string: urlString)!
+        return URL(string: "\(appURL)?appGuid=\(apiKey)")!
     }
     
     // MARK: Notification Badge
     
-    @objc private func startNotificationPolling() {
-        guard autoAuthentication else { return }
-        
+    @objc private func startNotificationPolling() {        
         notificationRefreshTimer?.invalidate()
         notificationRefreshTimer = Timer(timeInterval: refreshInterval, target: self, selector: #selector(refreshNotificationBadge), userInfo: nil, repeats: true)
         RunLoop.main.add(notificationRefreshTimer!, forMode: .default)

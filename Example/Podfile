@@ -2,7 +2,7 @@ use_frameworks!
 platform :ios, '9.0'
 
 target 'WeLoop_Example' do
-  pod 'WeLoop'
+  pod 'WeLoop', :path => '../'
 
   target 'WeLoop_Tests' do
     inherit! :search_paths

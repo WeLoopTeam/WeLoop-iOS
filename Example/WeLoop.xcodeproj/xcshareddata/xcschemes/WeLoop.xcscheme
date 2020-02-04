@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "05C37D4AA5C1F4EA017378214E849BDB"
+               BlueprintIdentifier = "7C65C712381AAF46FD78F27B7741E9A7"
                BuildableName = "WeLoop.framework"
                BlueprintName = "WeLoop"
                ReferencedContainer = "container:Pods/Pods.xcodeproj">
@@ -29,8 +29,6 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
       </Testables>
-      <AdditionalOptions>
-      </AdditionalOptions>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
@@ -45,14 +43,12 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "05C37D4AA5C1F4EA017378214E849BDB"
+            BlueprintIdentifier = "7C65C712381AAF46FD78F27B7741E9A7"
             BuildableName = "WeLoop.framework"
             BlueprintName = "WeLoop"
             ReferencedContainer = "container:Pods/Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
-      <AdditionalOptions>
-      </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
