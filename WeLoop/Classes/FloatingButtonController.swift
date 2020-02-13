@@ -72,7 +72,7 @@ class FloatingButtonController: UIViewController {
                 imageView.clipsToBounds = true
                 imageView.contentMode = .scaleAspectFill
                 imageView.image = UIImage(data: imageData as Data)
-                imageView.layer.cornerRadius = 
+                imageView.layer.cornerRadius = self.button.bounds.width / 2
                 self.button.addSubview(imageView)
             }
         }
