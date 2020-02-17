@@ -35,24 +35,18 @@ pod 'WeLoop'
 
 In order to invoke WeLoop you have two options. 
 
-1. You provide the user identity. This is the default option. Simply provide your project key, and identity the current user by calling `identifyUser`.
+1. You provide the user identity. Simply provide your project key, and identity the current user by calling `identifyUser`.
 
 ```swift
 WeLoop.initialize(apiKey: "YOUR_PROJECT_GUID");
-WeLoop.identifyUser(firstName: "John", lastName: "Doe", email: "john.doe@weloop.io")
+let user = User(id: "1", email: "test1@yopmail.com", firstName: "test1", lastName: "test2")
+WeLoop.authenticateUser(user: user)
 ```
 
-2. You let the user provide its login infos. Pass autoAuthentication to false when calling the `initialize` function.
+2. You let the user provide its login infos: don't call `authenticateUser``, and the widget will show the login page when it's launched.
 
 ```swift
-WeLoop.initialize(apiKey: "YOUR_PROJECT_GUID", autoAuthentication: false);
-```
-
-Finally, if you have a weloop url with a customized subdomain, like `"https://myCompany.getweloop.io/"`, you'll need to specify a subdomain when initializing WeLoop:
-
-
-```swift
-WeLoop.initialize(apiKey: "YOUR_PROJECT_GUID", autoAuthentication: true, subdomain: "myCompany");
+WeLoop.initialize(apiKey: "YOUR_PROJECT_GUID");
 ```
 
 
@@ -63,10 +57,10 @@ You can choose between different methods to invoke the WeLoop widget inside your
 1. Floating Action Button
 
 ```swift
-// Set the invocation preferences. You can always change them after invoking the SDK
-WeLoop.set(preferredButtonPosition: .bottomRight)
 WeLoop.set(invocationMethod: .fab)
 ```
+
+Customisation options for the button (color, icon, placement) can be done inside your WeLoop project settings.
 
 2. Shake Gesture
 

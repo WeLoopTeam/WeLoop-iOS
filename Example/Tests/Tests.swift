@@ -5,11 +5,13 @@ typealias JSON<T> = Dictionary<String, T> where T: Equatable
 
 let settingsData = """
 {
-    "Widget_Icon": "",
-    "Widget_Message": "",
-    "Widget_Position": "right",
-    "Widget_PrimaryColor": "#ff5c80",
-    "Language": "EN"
+    "Widget_Position": "Right",
+    "Widget_PrimaryColor": {
+        "r": 255.0,
+        "g": 0,
+        "b": 0,
+    },
+    "Language": "EN",
 }
 """.data(using: .utf8)!
 
@@ -18,8 +20,9 @@ class Tests: XCTestCase {
     func testSettingsDecoding() {
         do {
             let settings = try JSONDecoder().decode(Settings.self, from: settingsData)
-            XCTAssertEqual(settings.iconUrl, "")
-            XCTAssertEqual(settings.message, "")
+            XCTAssertEqual(settings.iconUrl, nil)
+            XCTAssertEqual(settings.message, nil)
+            XCTAssertEqual(settings.primaryColor , UIColor.red)
             XCTAssertEqual(settings.position, .bottomRight)
         } catch (let error) {
             XCTFail(error.localizedDescription)

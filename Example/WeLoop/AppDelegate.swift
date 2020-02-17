@@ -13,7 +13,7 @@ import WeLoop
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     // This is a fake project GUID. Replace it with your actual project ID to test the example
-    private let projectGUID = "496d6230-516a-11ea-99ea-f3431a995757"
+    private let projectGUID = "e19340c0-b453-11e9-8113-1d4bacf0614e"
     private let user = User(id: "1", email: "test1@yopmail.com", firstName: "test1", lastName: "test2")
     
     var window: UIWindow?
