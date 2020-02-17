@@ -3,6 +3,16 @@ import XCTest
 
 typealias JSON<T> = Dictionary<String, T> where T: Equatable
 
+let settingsData = """
+{
+    "Widget_Icon": "",
+    "Widget_Message": "",
+    "Widget_Position": "right",
+    "Widget_PrimaryColor": "#ff5c80",
+    "Language": "EN"
+}
+""".data(using: .utf8)!
+
 class Tests: XCTestCase {
     
     func testSettingsDecoding() {
@@ -10,10 +20,16 @@ class Tests: XCTestCase {
             let settings = try JSONDecoder().decode(Settings.self, from: settingsData)
             XCTAssertEqual(settings.iconUrl, "")
             XCTAssertEqual(settings.message, "")
-            XCTAssertEqual(settings.position, "right")
+            XCTAssertEqual(settings.position, .bottomRight)
         } catch (let error) {
             XCTFail(error.localizedDescription)
         }
+    }
+    
+    func testAESEncryption() {
+        let user = User(id: "1", email: "test1@yopmail.com", firstName: "test1", lastName: "test2")
+        let token = user.generateToken(appUUID: "273295d0-4686-11ea-ae43-83e39941d033")
+        XCTAssertNotNil(token)
     }
     
     private func testBase64ObjectsEqual(string1: String, string2: String) throws {

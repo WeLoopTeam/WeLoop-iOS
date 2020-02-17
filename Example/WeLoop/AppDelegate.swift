@@ -13,21 +13,20 @@ import WeLoop
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     // This is a fake project GUID. Replace it with your actual project ID to test the example
-    private let projectGUID = "e19340c0-b453-11e9-8113-1d4bacf0614e"
+    private let projectGUID = "496d6230-516a-11ea-99ea-f3431a995757"
+    private let user = User(id: "1", email: "test1@yopmail.com", firstName: "test1", lastName: "test2")
     
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
-        // Set the refresh interval to display a notification badge. Do this before initializing the SDK
-        WeLoop.set(notificationRefreshInterval: 5.0)
-        
+                
         // Set the invocation preferences. You can always change them after invoking the SDK
-        WeLoop.set(preferredButtonPosition: .bottomRight)
         WeLoop.set(invocationMethod: .fab)
         
         WeLoop.set(delegate: self)
         WeLoop.initialize(apiKey: projectGUID);
+        WeLoop.authenticateUser(user: user)
+        
 
         return true
     }

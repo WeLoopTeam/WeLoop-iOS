@@ -11,13 +11,11 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    @IBOutlet weak var buttonPositionSegmentedControl: UISegmentedControl!
     @IBOutlet weak var invocationSegmentedControl: UISegmentedControl!
     @IBOutlet weak var launchButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         invocationSegmentedControl.selectedSegmentIndex = WeLoop.shared.invocationMethod.rawValue
-        buttonPositionSegmentedControl.selectedSegmentIndex = WeLoop.shared.preferredButtonPosition.rawValue
     }
 
     @IBAction func launch(_ sender: Any) {
@@ -27,11 +25,6 @@ class ViewController: UIViewController {
     @IBAction func setInvocation(_ sender: UISegmentedControl) {
         guard let method = WeLoopInvocation(rawValue: sender.selectedSegmentIndex) else { return }
         WeLoop.set(invocationMethod: method)
-    }
-    
-    @IBAction func setButtonPosition(_ sender: UISegmentedControl) {
-        guard let position = ButtonPosition(rawValue: sender.selectedSegmentIndex) else { return }
-        WeLoop.set(preferredButtonPosition: position)
     }
 }
 

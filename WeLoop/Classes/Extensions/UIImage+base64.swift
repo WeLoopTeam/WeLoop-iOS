@@ -17,7 +17,7 @@ extension UIImage {
     }
     
     static func weLoopIcon() -> UIImage?  {
-        let bundle = Bundle(for: WeLoopButton.self)
+        let bundle = Bundle(for: WeLoop.self)
         return UIImage(named: "WeLoopIcon", in: bundle, compatibleWith: nil)
     }
 }

@@ -11,13 +11,13 @@ struct Settings: Codable {
     
     let iconUrl: String?
     let message: String?
-    let position: String?;
+    let position: ButtonPosition;
     let rgb: Color?
     let language: String;
     
     var primaryColor: UIColor {
         guard let rgb = rgb else { return UIColor.weLoopDefault }
-        return UIColor(red: rgb.r / 255, green: rgb.g / 255, blue: rgb.b / 255, alpha: rgb.a)
+        return UIColor(red: rgb.r / 255, green: rgb.g / 255, blue: rgb.b / 255, alpha: 1)
     }
     
     private enum CodingKeys: String, CodingKey {
@@ -32,7 +32,7 @@ struct Settings: Codable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.iconUrl = try container.decodeIfPresent(String.self, forKey: .iconUrl)
         self.message = try container.decodeIfPresent(String.self, forKey: .message)
-        self.position = try container.decodeIfPresent(String.self, forKey: .position)
+        self.position = try container.decodeIfPresent(ButtonPosition.self, forKey: .position) ?? .bottomRight
         self.rgb = try container.decodeIfPresent(Color.self, forKey: .rgb)
         self.language = try container.decodeIfPresent(String.self, forKey: .language) ?? "EN"
     }
@@ -43,6 +43,5 @@ struct Color: Codable {
     let r: CGFloat
     let g: CGFloat
     let b: CGFloat
-    let a: CGFloat
 }
 

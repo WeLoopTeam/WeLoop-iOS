@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -21,8 +19,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="gop-2W-JxQ">
-                                <rect key="frame" x="99.5" y="152" width="176" height="29"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bordered" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="gop-2W-JxQ">
+                                <rect key="frame" x="92" y="132" width="191" height="32"/>
+                                <color key="backgroundColor" systemColor="secondarySystemFillColor" red="0.47058823529999999" green="0.47058823529999999" blue="0.50196078430000002" alpha="0.16" colorSpace="custom" customColorSpace="sRGB"/>
                                 <segments>
                                     <segment title="Manual"/>
                                     <segment title="Shake"/>
@@ -33,7 +32,7 @@
                                 </connections>
                             </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Invocation Method" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oRg-qH-VTj">
-                                <rect key="frame" x="116.5" y="94" width="142" height="21"/>
+                                <rect key="frame" x="116.5" y="74" width="142" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -45,41 +44,18 @@
                                     <action selector="launch:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="p4k-15-mhL"/>
                                 </connections>
                             </button>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="jr9-h0-1QY">
-                                <rect key="frame" x="30" y="291" width="315" height="29"/>
-                                <segments>
-                                    <segment title="BR             "/>
-                                    <segment title="BL"/>
-                                    <segment title="TL"/>
-                                    <segment title="TR"/>
-                                </segments>
-                                <connections>
-                                    <action selector="setButtonPosition:" destination="vXZ-lx-hvc" eventType="valueChanged" id="2Et-5M-Zmh"/>
-                                </connections>
-                            </segmentedControl>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Button Position" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qwQ-VV-neK">
-                                <rect key="frame" x="129" y="247" width="117" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="oRg-qH-VTj" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="0kZ-96-tSR"/>
                             <constraint firstItem="Ach-sZ-4Ib" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="5Qd-UO-eQm"/>
-                            <constraint firstItem="jr9-h0-1QY" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="6xx-aa-PmU"/>
                             <constraint firstItem="oRg-qH-VTj" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="74" id="ESC-Nz-5Pq"/>
-                            <constraint firstItem="qwQ-VV-neK" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="HQ0-R4-kXS"/>
-                            <constraint firstItem="qwQ-VV-neK" firstAttribute="top" secondItem="gop-2W-JxQ" secondAttribute="bottom" constant="67" id="HwD-4x-VVI"/>
-                            <constraint firstItem="jr9-h0-1QY" firstAttribute="top" secondItem="qwQ-VV-neK" secondAttribute="bottom" constant="23" id="Kf9-Gx-xR3"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="Ach-sZ-4Ib" secondAttribute="bottom" constant="192" id="hGQ-Ne-Mxf"/>
                             <constraint firstItem="gop-2W-JxQ" firstAttribute="top" secondItem="oRg-qH-VTj" secondAttribute="bottom" constant="37" id="ucw-A2-4Qu"/>
                             <constraint firstItem="gop-2W-JxQ" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="w1l-ga-dBS"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="buttonPositionSegmentedControl" destination="jr9-h0-1QY" id="WHv-Re-lOd"/>
                         <outlet property="invocationSegmentedControl" destination="gop-2W-JxQ" id="fuB-ig-hv1"/>
                         <outlet property="launchButton" destination="Ach-sZ-4Ib" id="8Pr-U9-MH0"/>
                     </connections>
