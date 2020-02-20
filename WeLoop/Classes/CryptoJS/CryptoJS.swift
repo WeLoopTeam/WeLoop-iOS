@@ -21,12 +21,11 @@ open class CryptoJS{
             super.init()
             
             // Retrieve the content of aes.js
-            let cryptoJSpath = Bundle(for: WeLoop.self).path(forResource: "aes", ofType: "js")
+            let cryptoJSpath = Bundle.weLoop?.path(forResource: "aes", ofType: "js")
             
             if(( cryptoJSpath ) != nil){
                 do {
                     let cryptoJS = try String(contentsOfFile: cryptoJSpath!, encoding: String.Encoding.utf8)
-                    print("Loaded aes.js")
                     
                     // Evaluate aes.js
                     _ = cryptoJScontext?.evaluateScript(cryptoJS)

@@ -26,8 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         WeLoop.set(delegate: self)
         WeLoop.initialize(apiKey: projectGUID);
         WeLoop.authenticateUser(user: user)
-        
-
+    
         return true
     }
 }
