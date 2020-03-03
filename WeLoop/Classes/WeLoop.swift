@@ -18,6 +18,7 @@ import UIKit
     @objc optional func initializationSuccessful()
     @objc optional func initializationFailed(with error: Error)
     @objc optional func failedToLaunch(with error: Error)
+    @objc optional func notificationCountUpdated(newCount: Int)
 }
 
 public class WeLoop: NSObject {
@@ -219,8 +220,9 @@ public class WeLoop: NSObject {
         return URL(string: "\(appURL)?appGuid=\(apiKey)")!
     }
         
-    func setNotificationBadge(count: Int?) {
-        fabController?.setNotificationBadge(hidden: count == nil || count! == 0)
+    func setNotificationBadge(count: Int) {
+        fabController?.setNotificationBadge(count: count)
+        delegate?.notificationCountUpdated?(newCount: count)
     }
 }
 

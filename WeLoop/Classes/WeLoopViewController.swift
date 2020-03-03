@@ -20,6 +20,7 @@ class WeLoopViewController: UIViewController {
     
     var url: URL?
     weak var webView: WKWebView!
+    weak var indicator: UIActivityIndicatorView!
     var window: UIWindow = UIWindow(frame: UIScreen.main.bounds)
     private var observation: NSKeyValueObservation?
 
@@ -64,8 +65,11 @@ class WeLoopViewController: UIViewController {
 
     private func configureWebview() {
         let webView = WKWebView(frame: view.bounds, configuration: self.configuration)
+        let indicator = UIActivityIndicatorView(frame: view.bounds)
         self.webView = webView
+        self.indicator = indicator
         view.addSubview(webView)
+        view.addSubview(indicator)
         
         
         if #available(iOS 11.0, *) {
@@ -73,8 +77,11 @@ class WeLoopViewController: UIViewController {
             self.additionalSafeAreaInsets = UIEdgeInsets(top: 0, left: 0, bottom: -bottomInset, right: 0)
         }
         
+        indicator.style = .gray
+        indicator.hidesWhenStopped = true
+        
         webView.isOpaque = false
-        webView.backgroundColor = .clear
+        webView.backgroundColor = .white
         webView.scrollView.backgroundColor = .clear
         
         webView.allowsLinkPreview = false
@@ -92,7 +99,7 @@ class WeLoopViewController: UIViewController {
     
     func loadWeLoop() {
         guard let url = url else { return }
-        webView.alpha = 0
+        indicator.startAnimating()
         webView.load(URLRequest(url: url))
     }
     
@@ -107,7 +114,7 @@ class WeLoopViewController: UIViewController {
     
     func sendCurrentUser() {
         guard let uuid = WeLoop.shared.apiKey, let token = WeLoop.shared.authenticationToken else { return }
-        webView?.evaluateJavaScript("GetCurrentUser({ appGuid: \(uuid), token: \(token)})")
+        webView?.evaluateJavaScript("GetCurrentUser({ appGuid: '\(uuid)', token: '\(token)'})")
     }
 }
 
@@ -147,6 +154,9 @@ extension WeLoopViewController: WKNavigationDelegate {
     }
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-         webView.alpha = 1
+       indicator.stopAnimating()
+        //TODO: commented out for now, but at this point the load is finished (files have been loaded) and the spa should render
+        // a loader. This is not done immediately so there is a little lag, but I can't do anything more on the native side.
+        //webView.backgroundColor = .clear
     }
 }

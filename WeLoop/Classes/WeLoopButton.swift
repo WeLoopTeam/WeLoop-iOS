@@ -10,11 +10,13 @@ import UIKit
 
 private let size: CGFloat = 60.0
 private let badgeSize: CGFloat = 24.0
+private let badgePadding: CGFloat = 5.0
 private let shadowHighlightedOpacity: Float = 0.2
 
 class WeLoopButton: UIButton {
     
     private let badge = UIView(frame: CGRect(x: 0, y: 0, width: badgeSize, height: badgeSize))
+    private let badgeLabel =  UILabel(frame: CGRect(x: 0, y: 0, width: badgeSize, height: badgeSize))
     
     var color: UIColor? = nil  {
         didSet {
@@ -58,23 +60,28 @@ class WeLoopButton: UIButton {
     
     func setupBadge() {
         insertSubview(badge, at: 1)
-        badge.translatesAutoresizingMaskIntoConstraints = false
-        badge.backgroundColor = .white
-        badge.layer.borderColor = UIColor.red.cgColor
-        badge.layer.borderWidth = badgeSize / 2 - 2
+        badge.addSubview(badgeLabel)
+        
+        badge.backgroundColor = .red
+        badgeLabel.textColor = .white
+        badgeLabel.textAlignment = .center
         badge.layer.cornerRadius = badgeSize / 2
         
+        badge.clipsToBounds =  true
         badge.isHidden = true
         
-        badge.layer.shadowColor = UIColor.red.cgColor
-        badge.layer.shadowRadius = 3
-        badge.layer.shadowOpacity = 0.1
-        badge.layer.shadowOffset = CGSize.zero
+        badge.translatesAutoresizingMaskIntoConstraints = false
+        badgeLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        badge.widthAnchor.constraint(equalToConstant: badgeSize).isActive = true
+        badge.widthAnchor.constraint(greaterThanOrEqualToConstant: badgeSize).isActive = true
         badge.heightAnchor.constraint(equalToConstant: badgeSize).isActive = true
         badge.centerYAnchor.constraint(equalTo: topAnchor, constant: size / (2 * CGFloat.pi)).isActive = true
         badge.centerXAnchor.constraint(equalTo: rightAnchor, constant: -size / (2 * CGFloat.pi)).isActive =  true
+        
+        badgeLabel.centerXAnchor.constraint(equalTo: badge.centerXAnchor).isActive = true
+        badgeLabel.centerYAnchor.constraint(equalTo: badge.centerYAnchor).isActive = true
+        badgeLabel.leftAnchor.constraint(equalTo: badge.leftAnchor, constant: badgePadding).isActive = true
+        badgeLabel.rightAnchor.constraint(equalTo: badge.rightAnchor, constant: -badgePadding).isActive = true
     }
     
     func configureButton(settings: Settings) {
@@ -98,7 +105,8 @@ class WeLoopButton: UIButton {
         }
     }
     
-    func setBadge(hidden: Bool) {
-        badge.isHidden = hidden
+    func setBadge(count: Int) {
+        badge.isHidden = count < 1
+        badgeLabel.text = "\(count)"
     }
 }

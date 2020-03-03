@@ -58,8 +58,8 @@ class FloatingButtonController: UIViewController {
         view.setNeedsLayout()
     }
     
-    func setNotificationBadge(hidden: Bool) {
-        self.button.setBadge(hidden: hidden)
+    func setNotificationBadge(count: Int) {
+        self.button.setBadge(count: count)
     }
     
     @objc func keyboardDidShow(notification: NSNotification) {

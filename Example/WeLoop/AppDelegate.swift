@@ -46,4 +46,8 @@ extension AppDelegate: WeLoopDelegate {
         // The widget could not be launched. Most likely is that the initialization process failed, or the user is missing in autoAuthentication
         print(error)
     }
+    
+    func notificationCountUpdated(newCount: Int) {
+        print(newCount)
+    }
 }
