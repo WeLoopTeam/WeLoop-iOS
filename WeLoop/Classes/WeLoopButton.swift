@@ -87,7 +87,8 @@ class WeLoopButton: UIButton {
     func configureButton(settings: Settings) {
         guard let urlString = settings.iconUrl, let url = URL(string: urlString) else {
             color = settings.primaryColor
-            setImage(UIImage.weLoopIcon(), for: .normal)
+            let icon = UIImage.weLoopIcon()
+            setImage(icon, for: .normal)
             return
         }
     

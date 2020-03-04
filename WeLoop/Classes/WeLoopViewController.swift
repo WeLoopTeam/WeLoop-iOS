@@ -14,6 +14,7 @@ enum WeLoopWebAction: String, CaseIterable {
     case getCapture = "WeloopGetCapture"
     case getCurrentUser = "GetCurrentUser"
     case setNotificationCount = "SetNotificationCount"
+    case isLoaded = "IsLoaded"
 }
 
 class WeLoopViewController: UIViewController {
@@ -113,8 +114,12 @@ class WeLoopViewController: UIViewController {
     }
     
     func sendCurrentUser() {
-        guard let uuid = WeLoop.shared.apiKey, let token = WeLoop.shared.authenticationToken else { return }
-        webView?.evaluateJavaScript("GetCurrentUser({ appGuid: '\(uuid)', token: '\(token)'})")
+        guard let uuid = WeLoop.shared.apiKey else { return }
+        if let token = WeLoop.shared.authenticationToken {
+            webView?.evaluateJavaScript("GetCurrentUser({ appGuid: '\(uuid)', token: '\(token)'})")
+        } else {
+            webView?.evaluateJavaScript("GetCurrentUser({ appGuid: '\(uuid)'})")
+        }
     }
 }
 
@@ -131,6 +136,9 @@ extension WeLoopViewController: WKScriptMessageHandler {
         case .setNotificationCount:
             guard let body = message.body as? [String: Any], let count = body["number"] as? Int else { return }
             WeLoop.shared.setNotificationBadge(count: count)
+        case .isLoaded:
+            indicator.stopAnimating()
+            webView.backgroundColor = .clear
         }
     }
 }
@@ -151,12 +159,5 @@ extension WeLoopViewController: WKNavigationDelegate {
                     self?.loadWeLoop()
             }
         }
-    }
-    
-    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-       indicator.stopAnimating()
-        //TODO: commented out for now, but at this point the load is finished (files have been loaded) and the spa should render
-        // a loader. This is not done immediately so there is a little lag, but I can't do anything more on the native side.
-        //webView.backgroundColor = .clear
     }
 }
