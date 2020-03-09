@@ -73,6 +73,38 @@ WeLoop.invoke()
 
 ```
 
+### Delegate methods
+
+You can set up a delegate to listen for some events returned by the SDK with the following method: `WeLoop.set(delegate: self)`
+
+You can then implement the following optional delegate methods:
+
+````swift
+extension AppDelegate: WeLoopDelegate {
+    
+    func initializationSuccessful() {
+        // From this point forward, we can safely invoke the Widget manually
+    }
+    
+    func initializationFailed(with error: Error) {
+        // Initialization Failed (no network for example). Based on the error you'll have to retry the initialization later.
+        print(error)
+    }
+    
+    func failedToLaunch(with error: Error) {
+        // The widget could not be launched. Most likely is that the initialization process failed, or the user is missing in autoAuthentication
+        print(error)
+    }
+    
+    func notificationCountUpdated(newCount: Int) {
+        // Set the new count on your custom view
+        print(newCount)
+    }
+}
+````
+
+
+
 ### Updating your plist
 
 Since WeLoop offers the possibility to upload photos from the user photo gallery and from the camera, you will have to add the following entries to your plist, if they are not already present:
