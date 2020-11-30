@@ -8,7 +8,7 @@
 import Foundation
 
 /// Flag to switch between production and staging environments. Use for debugging only.
-private let isStaging = true
+private let isStaging = false
 
 typealias ConfigurationCallback = (_ project:() throws -> Settings) -> Void
 
