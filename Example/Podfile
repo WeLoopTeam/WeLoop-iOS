@@ -6,7 +6,9 @@ target 'WeLoop_Example' do
 
   target 'WeLoop_Tests' do
     inherit! :search_paths
-
-    
   end
+end
+
+target 'WeLoopSwiftUI' do
+  pod 'WeLoop', :path => '../'
 end
