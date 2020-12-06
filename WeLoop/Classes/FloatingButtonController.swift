@@ -76,7 +76,21 @@ private class FloatingButtonWindow: UIWindow {
     var button: UIButton?
     
     init() {
-        super.init(frame: UIScreen.main.bounds)
+        if #available(iOS 13.0, *), WeLoop.shared.sceneBasedApplication {
+            let scene = UIApplication.shared
+                .connectedScenes
+                .filter { $0.activationState == .foregroundActive }
+                .first
+            
+            guard let windowScene = scene as? UIWindowScene else {
+                super.init(frame: UIScreen.main.bounds)
+                return
+            }
+            super.init(frame: windowScene.coordinateSpace.bounds)
+            self.windowScene = windowScene
+        } else {
+            super.init(frame: UIScreen.main.bounds)
+        }
         backgroundColor = nil
     }
     

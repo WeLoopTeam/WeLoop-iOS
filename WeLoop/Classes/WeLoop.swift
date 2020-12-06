@@ -44,7 +44,10 @@ public class WeLoop: NSObject {
     
     /// The preferred invocation method for the SDK. Must be set using `setInvocationMethod`
     var invocationMethod: WeLoopInvocation = .manual
-      
+    
+    /// If set to true, weloop windows are attached to your top most foreground active scene
+    var sceneBasedApplication: Bool = false
+    
     // MARK: Object references
     
     /// A reference to the previous window when the widget is invoked. Used to restore
@@ -57,6 +60,9 @@ public class WeLoop: NSObject {
     /// A reference to the controller containing the floating action button
     private var fabController: FloatingButtonController?
     
+    /// A reference to the window used to present the Weloop interface
+    private var popupWindow: UIWindow?
+    
     /// A screenshot of the window is taken right before invoking the SDK. This is a ref to this screenshot
     var screenshot: UIImage?
     
@@ -64,6 +70,7 @@ public class WeLoop: NSObject {
     
     /// The WeLoop singleton. This instance is not public, all methods are using static functions to keep the API simple
     static let shared = WeLoop()
+    
     
     
     // MARK: - Public API
@@ -91,6 +98,10 @@ public class WeLoop: NSObject {
     /// Set the method used to invoke the weLoop Widget.
     @objc public static func set(invocationMethod method: WeLoopInvocation) {
         shared.set(invocationMethod: method)
+    }
+    
+    @objc public static func set(sceneBasedApplication: Bool) {
+        shared.sceneBasedApplication = sceneBasedApplication
     }
     
     /// Manually invoke the WeLoop widget.
@@ -182,8 +193,7 @@ public class WeLoop: NSObject {
     // MARK: Widget
     
     var isShowingWidget: Bool {
-        guard let widgetVC = weLoopViewController else { return false }
-        return widgetVC.window.isKeyWindow && previousWindow == nil
+        return popupWindow?.isKeyWindow ?? false && previousWindow == nil
     }
     
     private func initializeWidget() throws {
@@ -193,6 +203,22 @@ public class WeLoop: NSObject {
         // Forces the pre-load of the webview 
         widgetVC.loadViewIfNeeded()
         self.weLoopViewController = widgetVC
+        try configurePopupWindow()
+    }
+    
+    private func configurePopupWindow() throws {
+        if #available(iOS 13.0, *), self.sceneBasedApplication {
+            let scene = UIApplication.shared.connectedScenes.filter { $0.activationState == .foregroundActive }.first
+            guard let windowScene = scene as? UIWindowScene else { throw WeLoopError.windowMissing }
+            popupWindow = UIWindow(frame: windowScene.coordinateSpace.bounds)
+            popupWindow?.windowScene = windowScene
+        } else {
+            popupWindow = UIWindow(frame: UIScreen.main.bounds)
+        }
+        
+        popupWindow?.backgroundColor = .clear
+        popupWindow?.windowLevel = .statusBar + 1
+        popupWindow?.rootViewController = weLoopViewController
     }
     
     private func showWidget() throws {
@@ -200,8 +226,8 @@ public class WeLoop: NSObject {
         
         screenshot = keyWindow.takeScreenshot()
         keyWindow.resignKey()
-        weLoopViewController?.window.becomeKey()
-        weLoopViewController?.window.isHidden = false
+        popupWindow?.becomeKey()
+        popupWindow?.isHidden = false
         previousWindow = keyWindow
         disableInvocation(method: invocationMethod)
     }
@@ -209,8 +235,8 @@ public class WeLoop: NSObject {
     /// Close the widget, and show the previous window instead
     func closeWidget() {
         guard let settings = settings, let window = previousWindow else { return }
-        weLoopViewController?.window.resignKey()
-        weLoopViewController?.window.isHidden = true
+        popupWindow?.resignKey()
+        popupWindow?.isHidden = true
         window.makeKeyAndVisible()
         setupInvocation(settings: settings)
     }

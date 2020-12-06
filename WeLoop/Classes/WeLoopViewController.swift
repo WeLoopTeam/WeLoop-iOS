@@ -22,7 +22,6 @@ class WeLoopViewController: UIViewController {
     var url: URL?
     weak var webView: WKWebView!
     weak var indicator: UIActivityIndicatorView!
-    var window: UIWindow = UIWindow(frame: UIScreen.main.bounds)
     private var observation: NSKeyValueObservation?
 
     lazy var configuration: WKWebViewConfiguration = {
@@ -39,9 +38,6 @@ class WeLoopViewController: UIViewController {
     
     init() {
         super.init(nibName: nil, bundle: nil)
-        window.windowLevel = UIWindow.Level(rawValue: CGFloat.greatestFiniteMagnitude)
-        window.isHidden = true
-        window.rootViewController = self
     }
     
     deinit {
