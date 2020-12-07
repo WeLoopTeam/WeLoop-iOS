@@ -25,6 +25,16 @@ pod 'WeLoop'
 
 ## Usage
 
+### Compatibility with scene delegates
+
+If your application uses a `UISceneSession`, you need to configure the SDK early on in your ApplicationDelegate:
+
+```swift
+WeLoop.set(sceneBasedApplication: true)
+```
+
+In the next major release, this will no longer be necessary.
+
 ### Invocation
 
 In order to invoke WeLoop you have two options. 
