@@ -7,11 +7,14 @@
 //
 
 import SwiftUI
+import WeLoop
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        Button("manual") {
+            WeLoop.invoke()
+        }
+            
     }
 }
 
