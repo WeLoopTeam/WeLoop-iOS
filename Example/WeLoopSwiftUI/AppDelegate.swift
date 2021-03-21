@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         WeLoop.set(sceneBasedApplication: true)
                 
         // Set the invocation preferences. You can always change them after invoking the SDK
-        WeLoop.set(invocationMethod: .fab)
+        WeLoop.set(invocationMethod: .manual)
 
         WeLoop.set(delegate: self)
         WeLoop.initialize(apiKey: projectGUID);

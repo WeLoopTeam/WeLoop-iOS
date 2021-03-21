@@ -53,6 +53,23 @@ WeLoop.authenticateUser(user: user)
 WeLoop.initialize(apiKey: "YOUR_PROJECT_GUID");
 ```
 
+### Delay Webview initialization
+
+If you need to you can delay the initialization of the underlying webview:
+
+```swift
+WeLoop.initialize(apiKey: "YOUR_PROJECT_GUID", loadWebView: false);
+```
+
+In that case you can manually refresh the notification count for the currently authenticated user:
+
+```swift
+let user = User(id: "1", email: "test1@yopmail.com", firstName: "test1", lastName: "test2")
+WeLoop.authenticateUser(user: user)
+WeLoop.refreshNotificationBadge();
+```
+
+Note that it's not necessary if you are preloading the webview: 
 
 ### Invocation method
 

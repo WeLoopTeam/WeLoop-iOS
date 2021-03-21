@@ -31,6 +31,9 @@ public class WeLoop: NSObject {
     /// The authentication token generated from the user infos
     var authenticationToken: String?
     
+    /// The current authenticated user
+    var authenticatedUser: User?
+    
     /// The widget settings object return by WeLoop API
     internal var settings: Settings?
     
@@ -72,7 +75,6 @@ public class WeLoop: NSObject {
     static let shared = WeLoop()
     
     
-    
     // MARK: - Public API
 
     
@@ -80,8 +82,14 @@ public class WeLoop: NSObject {
     ///
     /// - Parameters:
     ///   - apiKey: your project Guid
-    @objc public static func initialize(apiKey: String) {
-        shared.initialize(apiKey: apiKey)
+    ///   - loadWebView: set to false to delay the initialization of the WeLoop webview. The WebView initialization will be done
+    ///                  when invoked for the first time (when calling `invoke` if you decided to use a manual invocation.
+    @objc public static func initialize(apiKey: String, loadWebView: Bool = true) {
+        shared.initialize(apiKey: apiKey, loadWebView: loadWebView)
+    }
+    
+    @objc public static func loadWebView() throws {
+        try shared.initializeWidget()
     }
     
     @objc public static func authenticateUser(user: User) {
@@ -100,6 +108,7 @@ public class WeLoop: NSObject {
         shared.set(invocationMethod: method)
     }
     
+    /// Set to true if your application uses `UIScene`
     @objc public static func set(sceneBasedApplication: Bool) {
         shared.sceneBasedApplication = sceneBasedApplication
     }
@@ -108,6 +117,15 @@ public class WeLoop: NSObject {
     @objc public static func invoke() {
         shared.invokeSelector()
     }
+    
+    /**
+        Manually refresh the notification badge count. This is useful only if you have passed `false ` to `loadWebview` during
+        initialization. You must have called `initialize` before, and `authenticateUser`, as the notification count is linked
+        to a user.
+     */
+    @objc public static func refreshNotificationBadge(errorHandler: ((_ error: Error) -> Void)? = nil) {
+        shared.refreshNotificationBadge(errorHandler: errorHandler)
+    }
         
     // MARK: - Internal API
 
@@ -115,8 +133,8 @@ public class WeLoop: NSObject {
     private override init() {
         super.init()
     }
-        
-    func initialize(apiKey: String) {
+            
+    func initialize(apiKey: String, loadWebView: Bool) {
         self.apiKey = apiKey
         configurationTask?.cancel()
         configurationError = nil
@@ -126,7 +144,9 @@ public class WeLoop: NSObject {
                 let widgetSettings = try settings()
                 self.settings = widgetSettings
                 self.setupInvocation(settings: widgetSettings)
-                try self.initializeWidget()
+                if (loadWebView) {
+                    try self.initializeWidget()
+                }
                 self.delegate?.initializationSuccessful?()
             } catch (let error) {
                 self.configurationError = error
@@ -139,6 +159,7 @@ public class WeLoop: NSObject {
     
     func authenticate(user: User) {
         guard let apiKey = apiKey else { return }
+        self.authenticatedUser = user
         self.authenticationToken = user.generateToken(appUUID: apiKey)
     }
     
@@ -196,7 +217,7 @@ public class WeLoop: NSObject {
         return popupWindow?.isKeyWindow ?? false && previousWindow == nil
     }
     
-    private func initializeWidget() throws {
+    func initializeWidget() throws {
         let url = try widgetURL()
         let widgetVC = WeLoopViewController()
         widgetVC.url = url
@@ -223,7 +244,9 @@ public class WeLoop: NSObject {
     
     private func showWidget() throws {
         guard let keyWindow = UIApplication.shared.keyWindow else { throw WeLoopError.windowMissing  }
-        
+        if popupWindow == nil {
+            try initializeWidget()
+        }
         screenshot = keyWindow.takeScreenshot()
         keyWindow.resignKey()
         popupWindow?.becomeKey()
@@ -249,6 +272,18 @@ public class WeLoop: NSObject {
     func setNotificationBadge(count: Int) {
         fabController?.setNotificationBadge(count: count)
         delegate?.notificationCountUpdated?(newCount: count)
+    }
+    
+    func refreshNotificationBadge(errorHandler: ((_ error: Error) -> Void)?) {
+        let dataTask = updateNotificationCount { (result) in
+            do {
+                let notificationCount = try result()
+                self.setNotificationBadge(count: notificationCount.count)
+            } catch let error {
+                errorHandler?(error)
+            }
+        }
+        dataTask?.resume()
     }
 }
 

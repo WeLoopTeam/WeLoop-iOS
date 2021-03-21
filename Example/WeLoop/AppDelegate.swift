@@ -24,8 +24,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         WeLoop.set(invocationMethod: .fab)
         
         WeLoop.set(delegate: self)
-        WeLoop.initialize(apiKey: projectGUID);
+        WeLoop.initialize(apiKey: projectGUID, loadWebView: false);
         WeLoop.authenticateUser(user: user)
+        
+        // Manually refresh the notification badge. This is useful only if WeLoop has been intialized
+        // without loading the webview
+        WeLoop.refreshNotificationBadge()
     
         return true
     }
